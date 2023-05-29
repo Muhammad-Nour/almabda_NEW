@@ -1,0 +1,41 @@
+/* public *******************/
+@font-face {
+    font-family: 'DroidKufi';
+    src: url('../fonts/DroidKufi-Regular.ttf') format('truetype'),
+    url('../fonts/DroidKufi-Regular.woff2') format('woff2'),
+    url('../fonts/DroidKufi-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body
+{
+	font-family: "DroidKufi" !important;
+}
+
+
+/* navbar *******************/
+.rd-navbar-classic.rd-navbar-static .rd-navbar-main-element {
+    direction: rtl;
+}
+
+.rd-navbar-classic.rd-navbar-static .rd-navbar-project-hamburger
+{
+    direction: ltr;
+}
+
+.rd-navbar-classic.rd-navbar-static .rd-nav-item {
+    margin-left: 35px;
+}
+
+.rd-navbar-static .rd-search
+{
+    right: auto;
+    left: calc(100% + 5px);
+}
+
+.rd-navbar-search .form-label
+{
+    text-align: right;
+}
