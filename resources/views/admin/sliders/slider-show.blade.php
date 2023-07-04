@@ -24,39 +24,54 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="row">
-								<div class="col-6 col-md-1">
+								<div class="col-6 col-md-2">
 									<p class="key">{{__('site.code')}}</p>
 									<p class="value">{{$slider->id}}</p>
 								</div>
 								<div class="col-6 col-md-3" style="overflow: hidden;">
 									<p class="key">{{__('site.image')}}</p>
-									<img src="{{asset('gallery/'.$slider->photo)}}" style="width:100%;height:100%;">
+									<img src="{{asset('gallery/sliders/'.$slider->photo)}}" style="width:100%;height:100%;">
 								</div>
 								<div class="col-6 col-md-3">
-									<p class="key">{{__('site.title')}}</p>
+									<p class="key">{{__('site.title_ar')}}</p>
 									<p class="value">{{$slider->title_ar}}</p>
 								</div>
 								<div class="col-6 col-md-3">
-									<p class="key">{{__('site.description')}}</p>
+									<p class="key">{{__('site.title_en')}}</p>
+									<p class="value">{{$slider->title_en}}</p>
+								</div>
+								<div class="col-6 col-md-3">
+									<p class="key">{{__('site.description_ar')}}</p>
 									<p class="value">{{$slider->description_ar}}</p>
 								</div>
-								@can('edit')
-								<div class="col-6 col-md-1">
-									<p class="key">{{__('site.edit')}}</p>
-									<a href="{{route('sliders.edit',$slider->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+								<div class="col-6 col-md-3">
+									<p class="key">{{__('site.description_en')}}</p>
+									<p class="value">{{$slider->description_en}}</p>
 								</div>
-								@endcan
-								@can('delete')
-								<div class="col-6 col-md-1">
-									<p class="key">{{__('site.delete')}}</p>
-									<form action="{{route('sliders.destroy', $slider->id)}}" method="post">
-										@csrf
-										{{ method_field('delete') }}
-										<button type="submit" class="btn btn-danger delete"><i class="fa fa-trash-alt"></i>
-										</button>
-									</form>
-								</div>
-								@endcan
+								
+
+								<div class="col-6 col-md-2">
+                                    <p class="key">{{__('site.actions')}}</p>
+                                    <div class="actions-dropdown">
+                                        <button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu">
+                                            @can('edit')
+                                            <a href="{{route('sliders.edit',$slider->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
+                                            @endcan
+                                            @can('delete')
+                                            <form action="{{route('sliders.destroy', $slider->id)}}" method="POST" class="dropdown-item">
+                                                @csrf
+                                                {{ method_field('delete') }}
+                                                <a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
+                                            </form>
+                                            @endcan
+                                        </div>
+                                    </div>
+                                </div>
+
 							</div>
 						</div>
 					</div>

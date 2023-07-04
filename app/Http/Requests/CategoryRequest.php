@@ -26,16 +26,19 @@ class CategoryRequest extends FormRequest
     {
         return [
 
-            'name' => ['required','string','max:255',Rule::unique('categories')->ignore($this->route()->parameter('category'))],
+            'name_ar'   => 
+            ['required','string','max:255',Rule::unique('categories')->ignore($this->route()->parameter('category'))],
+            'name_en'   => 
+            ['required','string','max:255',Rule::unique('categories')->ignore($this->route()->parameter('category'))],
         ];  
     }
 
     public function messages(){
         return [
-            'name.required' => 'إسم البراند مطلوب',
-            'name.string' => 'يجب أن يكون الإسم مكون من حروف و أرقام فقط  ',
-            'name.max' => 'يجب ألا يزيد الإسم عن 255 حرف و رقم',
-            'name.unique' => 'البراند مكرر',
+            'required' => 'إسم القسم مطلوب',
+            'string' => 'يجب أن يكون الإسم مكون من حروف و أرقام فقط  ',
+            'max' => 'يجب ألا يزيد الإسم عن 255 حرف و رقم',
+            'unique' => 'البراند مكرر',
         ];
     }
 

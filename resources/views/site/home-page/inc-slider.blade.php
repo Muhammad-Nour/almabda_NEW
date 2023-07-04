@@ -4,7 +4,7 @@
     <div class="swiper-wrapper text-center">
 
       @foreach ($sliders as $slider)
-      <div class="swiper-slide swiper-slide-1 context-dark text-left" data-slide-bg="{{ asset('design-site/images/sliders/'. $slider->photo) }}">
+      <div class="swiper-slide swiper-slide-1 context-dark text-left" data-slide-bg="{{ asset('gallery/sliders/'. $slider->photo) }}">
       </div>
       @endforeach
 

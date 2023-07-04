@@ -1,6 +1,6 @@
 @extends('layouts.admin_app')
 
-@section('title', __('site.users'))
+@section('title', __('site.clients'))
 
 @section('css')
 @stop
@@ -8,13 +8,13 @@
 @section('js')
 @stop
 
-@section('title-page',__('site.users'))
+@section('title-page',__('site.clients'))
 
 @section('content')
 
 <!-- Main content -->
 
-<div class="main-stage users">
+<div class="main-stage clients">
 	<div class="row">
 		<div class="col-md-11 m-auto">
 			@include('partial.alerts')
@@ -25,43 +25,26 @@
 			<div class="card">
 				<div class="card-body">
 					<div class="row">
-						<div class="col-6 col-md-2">
+						<div class="col-6 col-md-1">
 							<p class="key">{{__('site.code')}}</p>
 							<p class="value">{{$user->id}}</p>
 						</div>
-						<div class="col-6 col-md-2">
+						<div class="col-6 col-md-3">
 							<p class="key">{{__('site.name')}}</p>
 							<p class="value">{{$user->name}}</p>
 						</div>
-						<div class="col-6 col-md-2">
-							<p class="key">{{__('site.status')}}</p>
-							<p class="value">{{$user->getStatus()}}</p>
+						<div class="col-6 col-md-3">
+							<p class="key">{{__('site.email')}}</p>
+							<p class="value">{{$user->email}}</p>
 						</div>
 						<div class="col-6 col-md-2">
-							<p class="key">{{__('site.roles')}}</p>
-							@if (!empty($user->roles_name))
-							@foreach ($user->getRoleNames() as $v)
-							<label class="badge badge-success">{{ $v }}</label>
-							@endforeach
-							@endif
+							<p class="key">{{__('site.phone')}}</p>
+							<p class="value">{{$user->phone}}</p>
 						</div>
-						@can('edit')
-						<div class="col-6 col-md-2">
-							<p class="key">{{__('site.edit')}}</p>
-							<a href="{{route('users.edit',$user->id)}}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+						<div class="col-6 col-md-3">
+							<p class="key">{{__('site.address')}}</p>
+							<p class="value">{{$user->address}}</p>
 						</div>
-						@endcan
-						@can('delete')
-						<div class="col-6 col-md-2">
-							<p class="key">{{__('site.delete')}}</p>
-							<form action="{{route('users.destroy', $user->id)}}" method="post">
-								@csrf
-								{{ method_field('delete') }}
-								<button type="submit" class="btn btn-danger delete"><i class="fa fa-trash-alt"></i>
-								</button>
-							</form>
-						</div>
-						@endcan
 					</div>
 				</div>
 			</div>

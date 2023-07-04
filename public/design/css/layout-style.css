@@ -22,15 +22,15 @@ body
 {
     position: absolute;
     top: 75px;
-    background-color: #228d9f;
-    border-color: #228d9f;
+    background-color: #edb651;
+    border-color: #edb651;
     color: #fff;
 }
 
 .link-btn:hover, .link-btn:focus , .link-btn.active , .link-btn:active
 {
-    background-color: #228d9f;
-    border-color: #228d9f;
+    background-color: #edb651;
+    border-color: #edb651;
     color: #fff;
 }
 
@@ -144,8 +144,8 @@ select
 
 .btn-style
 {
-    background-color: #228d9f;
-    border-color: #228d9f !important;
+    background-color: #edb651;
+    border-color: #edb651 !important;
     color: #fff;
 }
 
@@ -160,4 +160,9 @@ select
 {
     color: #fff;
     padding-right: 20px;
+}
+
+.card-header
+{
+    background-color: #edb651;
 }

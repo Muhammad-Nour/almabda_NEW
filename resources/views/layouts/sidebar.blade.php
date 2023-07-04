@@ -57,6 +57,83 @@
               </li>
             </ul>
           </li>
+          @can('customs')
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ request()->routeIs('customs.*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                {{ __('site.customs') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('customs.index') }}" class="nav-link ">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>{{ __('site.show') }}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('customs.create') }}" class="nav-link">
+                  <i class="fas fa-plus nav-icon"></i>
+                  <p>{{ __('site.add') }}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endcan('customs')
+
+          @can('partners')
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ request()->routeIs('partners.*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                {{ __('site.partners') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('partners.index') }}" class="nav-link ">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>{{ __('site.show') }}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('partners.create') }}" class="nav-link">
+                  <i class="fas fa-plus nav-icon"></i>
+                  <p>{{ __('site.add') }}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endcan('customs')
+
+          @can('projects')
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ request()->routeIs('projects.*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                {{ __('site.projects') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('projects.index') }}" class="nav-link ">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>{{ __('site.show') }}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('projects.create') }}" class="nav-link">
+                  <i class="fas fa-plus nav-icon"></i>
+                  <p>{{ __('site.add') }}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endcan('customs')
 
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('sliders.*') ? 'active' : '' }}">
@@ -105,7 +182,7 @@
               </li>
             </ul>
           </li>
-
+@can('products')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -129,6 +206,7 @@
               </li>
             </ul>
           </li>
+          @endcan
 
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('admins.*') ? 'active' : '' }}">
@@ -147,6 +225,30 @@
               </li>
               <li class="nav-item">
                 <a href="{{ route('admins.create') }}" class="nav-link">
+                  <i class="fas fa-plus nav-icon"></i>
+                  <p>{{ __('site.add') }}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-lock"></i>
+              <p>
+                {{ __('site.clients') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('users.index') }}" class="nav-link ">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>{{ __('site.show') }}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('users.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>

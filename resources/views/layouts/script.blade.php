@@ -43,14 +43,20 @@
 </script>
 
 <script>
-
   $(document).ready(function(){
   $('#add_image').click(function(){
       $('#add_image_form').toggle(500);
   });
 });
-  
+</script>
 
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#add").submit(function () {
+        $(".btn-style").attr("disabled", true);
+        return true;
+    });
+});
 </script>
 
 <script src="{{ asset('design/js/printThis.js') }}"></script>

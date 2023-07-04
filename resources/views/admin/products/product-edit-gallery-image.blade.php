@@ -21,7 +21,8 @@
 		<div class="row">
 			<div class="col-md-12 single-row">
 				<div style="background: honeydew;border-radius: 3px;padding: 5px;margin-bottom: 5px;">
-					{{ __('site.product') }} : {{ $gallery->product->name; }}
+					{{ __('site.product_ar') }} : {{ $gallery->product->name_ar; }} |
+					{{ __('site.product_en') }} : {{ $gallery->product->name_en; }}
 				</div>
 				<div class="card">
 					<div class="card-body">
@@ -41,7 +42,7 @@
 									<input type="file" class="form-control" name="gallery">
 								</div>
 								<div class="col-6 col-md-12">
-									<button type="submit" class="btn btn-info">{{__('site.update')}}</button>
+									<button type="submit" class="btn btn-style">{{__('site.update')}}</button>
 								</div>
 							</div>
 						</div>

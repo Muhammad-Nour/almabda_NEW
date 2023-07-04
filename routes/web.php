@@ -11,7 +11,10 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategoryController;
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\CustomController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PartnerController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,22 +42,26 @@ Route::middleware('auth:admin')->group(function(){
     });
 });
 
-Route::get('products/{product}/editMainImages',[ProductController::class,'editMainImages'])->name('product.editMainImages');
-
-Route::put('products/{product}/updateMainImage',[ProductController::class,'updateMainImage'])->name('product.updateMainImage');
-
-Route::PUT('products/{product}/deleteMainImage',[ProductController::class,'deleteMainImages'])->name('product.deleteMainImages');
-
-Route::get('products/{product}/details',[ProductController::class,'getDetails'])->name('product.details');
-
-Route::post('products/add/images',[ProductController::class,'addImage'])->name('add.images');
-
 Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('products', ProductController::class);
+    Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('sliders', SliderController::class);
     Route::resource('galleries', ProductGalleryController::class);
     Route::resource('settings', SettingController::class);
+    Route::resource('customs', CustomController::class);
+    Route::resource('partners', PartnerController::class);
+    Route::resource('projects', ProjectController::class);
+
+    Route::get('products/{product}/editMainImages',[ProductController::class,'editMainImages'])->name('product.editMainImages');
+
+    Route::put('products/{product}/updateMainImage',[ProductController::class,'updateMainImage'])->name('product.updateMainImage');
+
+    Route::PUT('products/{product}/deleteMainImage',[ProductController::class,'deleteMainImages'])->name('product.deleteMainImages');
+
+    Route::get('products/{product}/details',[ProductController::class,'getDetails'])->name('product.details');
+
+    Route::post('products/add/images',[ProductController::class,'addImage'])->name('add.images');
 });
 
 Route::middleware([

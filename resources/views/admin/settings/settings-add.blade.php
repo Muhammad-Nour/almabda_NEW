@@ -18,33 +18,36 @@
 	<div class="row">
 		<div class="col-md-7 m-auto">
 			@include('partial.alerts')
-			<div class="card card-info">
+			<div class="card">
 				<div class="card-header">
 					<h3 class="card-title">{{__('site.add_data')}}</h3>
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form class="form-horizontal prevent-multiple-submits" action="{{route('settings.store')}}" method="post">
-					{{ csrf_field() }}
+				<form action="{{route('settings.store')}}" method="post">
+					@csrf
 					<div class="card-body">
 						<div class="form-group row">
-							<label for="key" class="col-sm-2 col-form-label">{{__('site.key')}}</label>
+							<label class="col-sm-2 col-form-label">{{__('site.key')}}</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="key" id="key" required 
-								placeholder="{{__('site.key')}}" value="{{old('key')}}">
+								<input type="text" class="form-control" name="key" required 
+								value="{{old('key')}}">
 							</div>
 						</div>
 						<div class="form-group row">
-							<label for="value" class="col-sm-2 col-form-label">{{__('site.value')}}</label>
+							<label class="col-sm-2 col-form-label">{{__('site.value')}}</label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="value" id="value" required 
-								placeholder="{{__('site.value')}}" value="{{old('value')}}">
+								<input type="text" class="form-control" name="value" required 
+								 value="{{old('value')}}">
 							</div>
 						</div>
 					</div>
 					<!-- /.card-body -->
 					<div class="card-footer">
-						<button type="submit" class="btn btn-info prevent-multiple-submits">{{__('site.add')}}</button>
+						<button type="submit" class="btn btn-style">
+								<i class="fa fa-plus"></i> 
+								{{__('site.add')}}
+							</button>
 					</div>
 					<!-- /.card-footer -->
 				</form>

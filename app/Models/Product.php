@@ -12,7 +12,7 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'name','unit','quantity','price','purchase_price','notify','category_id','admin_id','photo','small_photo','details','description'
+        'name_ar','name_en','unit_ar','unit_en','quantity','pre_price','discount','price','purchase_price','notify','photo','small_photo','description_ar','description_en','details_ar','details_en','admin_id','updated_by','category_id','created_at','updated_at'
     ];
 
     protected $primaryKey = 'id';

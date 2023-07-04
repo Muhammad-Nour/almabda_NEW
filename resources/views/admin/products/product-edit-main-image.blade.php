@@ -21,11 +21,13 @@
 		<div class="row">
 			<div class="col-md-12 single-row">
 				<div style="background: honeydew;border-radius: 3px;padding: 5px;margin-bottom: 5px;">
-				{{ __('site.product') }} : {{ $product->name; }}
+				{{ __('site.name_ar') }} : {{ $product->name_ar; }} | 
+				{{ __('site.name_en') }} : {{ $product->name_en; }}
+
 				</div>
 				<div class="card">
 					<div class="card-body">
-						<form class="form-horizontal" action="{{route('product.updateMainImage',$product->id)}}" 
+						<form action="{{route('product.updateMainImage',$product->id)}}" 
 						method="post" enctype="multipart/form-data">
 						@csrf
 						{{method_field('put')}}
@@ -43,7 +45,7 @@
 									<input type="file" class="form-control" name="smallPhoto">
 								</div>
 								<div class="col-6 col-md-2">
-									<button type="submit" class="btn btn-info">{{__('site.update')}}</button>
+									<button type="submit" class="btn btn-style">{{__('site.update')}}</button>
 								</div>
 							</div>
 						</form>

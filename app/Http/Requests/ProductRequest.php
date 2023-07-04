@@ -25,39 +25,36 @@ class ProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'      => 
+            'name_ar'      => 
             ['required','string','max:255',Rule::unique('products')->ignore($this->route()->parameter('product'))],
-            'unit'      => 'required|string',
-            'category_id'  => 'required|exists:categories,id',
-            'price'     => 'required|numeric|min:0',
-            'notify'    => 'required|integer|min:1',
-            'quantity'    => 'required|integer|min:0',
-            'details'      => 'required|string',
-            'description'      => 'required|string',
-
-
+            'name_en'      => 
+            ['required','string','max:255',Rule::unique('products')->ignore($this->route()->parameter('product'))],
+            'unit_ar'               => 'required|string',
+            'unit_en'               => 'required|string',
+            'category_id'           => 'required|exists:categories,id',
+            'pre_price'             => 'required|numeric|min:0',
+            'price'                 => 'required|numeric|min:0',
+            'discount'              => 'required|numeric',
+            'purchase_price'        => 'required|numeric',
+            'notify'                => 'required|integer|min:1',
+            'quantity'              => 'required|integer|min:0',
+            'details_ar'            => 'required|string',
+            'details_en'            => 'required|string',
+            'description_ar'        => 'required|string',
+            'description_en'        => 'required|string',
         ];  
     }
 
     public function messages(){
         return [
-            'name.required' => 'يجب إدخال إسم المنتج  ',
-            'name.string' => 'يجب أن يكون الإسم مكون من حروف و أرقام فقط ',
+            'required' => 'هذا الحقل مطلوب',
+            'string' => 'الحقل المطلوب يجب أن يكون نص',
             'name.max' => 'يجب ألا يزيد الإسم عن 255 حرف و رقم',
             'name.unique' => 'اسم الصنف مكرر',
 
-            'unit.required' => 'يجب إختيار الوحدة  ',
-            'unit.string' => 'يجب أن تكون الوحدة مكونة من حروف و أرقام فقط ',
-
-            'price.required'=> 'يجب ادخال سعر الصناف',
-            'price.numeric'=> 'صيغة الرقم غير صحيحة',
-            'price.min'=> 'السعر يجب الا يقل عن صفر',
-
-            'notify.required'=> 'يدب ادخال حد الطلب',
-            'notify.numeric'=> 'صيغة حد الطلب  غير صحيحة',
-            'notify.min'=> 'يجب ان يكون حد الطلب اكبر من صفر ',
-
-            'category_id.required'  => 'يجب إختيار البراند  ',
+            'numeric'=> 'الحقل يجب أن يكون رقم',
+            'min:0'=> 'لا يجب ان يقل الحقل عن  0',
+            'min:1'=> 'لا يجب ان يقل الحقل عن  1',
         ];
     }
 

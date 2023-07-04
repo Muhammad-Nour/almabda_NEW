@@ -60,17 +60,27 @@ class ProductController extends Controller
         $products = Product::create([
             'photo'=>$path,
             'small_photo'=>$smallpath,
-            'name'=>$request->name,
-            'unit'=>$request->unit,
+            'name_ar'=>$request->name_ar,
+            'name_en'=>$request->name_en,
+            'unit_ar'=>$request->unit_ar,
+            'unit_en'=>$request->unit_en,
+
             'price'=>$request->price,
+            'pre_price'=>$request->pre_price,
+            'purchase_price'=>$request->purchase_price,
             'notify'=>$request->notify,
             'quantity'=>$request->quantity,
-            'details'=>$request->details,
-            'description'=>$request->description,
+
+            'details_ar'=>$request->details_ar,
+            'details_en'=>$request->details_en,
+            'description_ar'=>$request->description_ar,
+            'description_en'=>$request->description_en,
+
+            'updated_by' => Auth::user()->id,
             'category_id'=>$request->category_id,
             'created_at' => $request->created_at,
-            'updated_at' => $request->created_at,
-            'user_id' => Auth::user()->id
+            'updated_at' => $request->updated_at,
+            'admin_id' => Auth::user()->id
         ]);
 
         if($request->hasFile('gallery'))
@@ -86,7 +96,7 @@ class ProductController extends Controller
                 ProductGallery::create([
                     'product_id' => $products->id,
                     'photo' => $path,
-                    'user_id' => Auth::user()->id
+                    'admin_id' => Auth::user()->id
                 ]);
             }
         }
@@ -188,7 +198,7 @@ class ProductController extends Controller
                 ProductGallery::create([
                     'product_id' => $request->product_id,
                     'photo' => $path,
-                    'user_id' => Auth::user()->id
+                    'admin_id' => Auth::user()->id
                 ]);
             }
         }

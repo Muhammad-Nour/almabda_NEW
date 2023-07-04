@@ -17,21 +17,20 @@
 	<div class="row">
 		<div class="col-md-7 m-auto">
 			@include('partial.alerts')
-			<div class="card card-info">
+			<div class="card">
 				<div class="card-header">
 					<h3 class="card-title">{{__('site.add_data')}}</h3>
 				</div>
 			<!-- /.card-header -->
 			<!-- form start -->
-			<form class="form-horizontal prevent-multiple-submits" action="{{route('roles.store')}}" method="post">
+			<form action="{{route('roles.store')}}" method="post">
 				@csrf
 				<div class="card-body">
-
 					<div class="form-group row">
-						<label for="name" class="col-sm-3 col-form-label">{{__('site.name')}}</label>
+						<label class="col-sm-3 col-form-label">{{__('site.name')}}</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="name" id="name" 
-							placeholder="{{__('site.name')}}" value="{{old('name')}}" required>
+							<input type="text" class="form-control" name="name" 
+							 value="{{old('name')}}" required>
 						</div>
 					</div>
 
@@ -51,7 +50,10 @@
 				</div>
 				<!-- /.card-body -->
 				<div class="card-footer">
-					<button type="submit" class="btn btn-info prevent-multiple-submits">{{__('site.add')}}</button>
+					<button type="submit" class="btn btn-style">
+								<i class="fa fa-plus"></i> 
+								{{__('site.add')}}
+							</button>
 				</div>
 				<!-- /.card-footer -->
 			</form>

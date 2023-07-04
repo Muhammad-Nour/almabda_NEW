@@ -26,74 +26,116 @@
 					<div class="card-body">
 						<div class="row">
 							@foreach($products as $product)
-							<div class="form-group col-6 col-md-4">
-								<label for="id" class="col-form-label">{{__('site.code')}} : {{$product->id}}</label>
-							</div>
-
-							<div class="form-group col-6 col-md-4">
-								<label for="category" class="col-form-label">{{__('site.category')}} : 
-									{{$product->category->name}}</label>
-							</div>
-
-							<div class="form-group col-6 col-md-4">
-								<label for="name" class="col-form-label">{{__('site.product')}} : {{$product->name}}</label>
+							<div class="form-group col-6 col-md-3">
+								<label>{{__('site.code')}} : {{$product->id}}</label>
 							</div>
 
 							<div class="form-group col-6 col-md-3">
-								<label for="price" class="col-form-label">{{__('site.price')}} : {{$product->price}}</label>
+								<label>{{__('site.category_ar')}} : 
+									{{$product->category->name_ar}}</label>
+							</div>
+							<div class="form-group col-6 col-md-3">
+								<label>{{__('site.category_en')}} : 
+									{{$product->category->name_en}}</label>
 							</div>
 
 							<div class="form-group col-6 col-md-3">
-								<label for="quantity" class="col-form-label">{{__('site.quantity')}} : {{$product->quantity}}</label>
+								<label>{{__('site.quantity')}} : {{$product->quantity}}</label>
 							</div>
 
 							<div class="form-group col-6 col-md-3">
-								<label for="notify" class="col-form-label">{{__('site.notify')}} : {{$product->notify}}</label>
+								<label>{{__('site.name_ar')}} : {{$product->name_ar}}</label>
+							</div>
+							<div class="form-group col-6 col-md-3">
+								<label>{{__('site.name_en')}} : {{$product->name_en}}</label>
+							</div>
+
+							<div class="col-12 col-md-3">
+								<p class="key">{{__('site.pre_price')}}</p>
+								<p class="value">{{$product->pre_price}}</p>
+							</div>
+							<div class="col-12 col-md-3">
+								<p class="key">{{__('site.price')}}</p>
+								<p class="value">{{$product->price}}</p>
+							</div>
+							<div class="col-12 col-md-3">
+								<p class="key">{{__('site.purchase_price')}}</p>
+								<p class="value">{{$product->purchase_price}}</p>
+							</div>
+							<div class="col-12 col-md-3">
+								<p class="key">{{__('site.discount')}}</p>
+								<p class="value">{{$product->discount}}</p>
+							</div>
+
+							
+
+							<div class="form-group col-6 col-md-3">
+								<label>{{__('site.notify')}} : {{$product->notify}}</label>
 							</div>
 
 							<div class="form-group col-6 col-md-3">
-								<label for="unit" class="col-form-label">{{__('site.unit')}} : {{$product->unit}}</label>
+								<label>{{__('site.unit_ar')}} : {{$product->unit_ar}}</label>
 							</div>
 
-							<div class="form-group col-6 col-md-6">
-								<label for="description" class="col-form-label">{{__('site.description')}}</label>
-								<div>{{$product->description}}</div>
+							<div class="form-group col-6 col-md-3">
+								<label>{{__('site.unit_en')}} : {{$product->unit_en}}</label>
 							</div>
 
-							<div class="form-group col-6 col-md-6">
-								<label for="details" class="col-form-label">{{__('site.details')}}</label>
-								<div>{{$product->details}}</div>
+							<div class="form-group col-6 col-md-3">
+								<label>{{__('site.description_ar')}}</label>
+								<div>{{$product->description_ar}}</div>
 							</div>
 
-							@can('edit')
-							<div class="col-6 col-md-2">
-								<p class="key">{{__('site.edit')}}</p>
-								<a href="{{route('products.edit',$product->id)}}" class="btn btn-info">
-									<i class="fa fa-edit"></i></a>
-								</div>
-								@endcan
+							<div class="form-group col-6 col-md-3">
+								<label>{{__('site.description_en')}}</label>
+								<div>{{$product->description_en}}</div>
+							</div>
 
-								@can('delete')
+							<div class="form-group col-6 col-md-3">
+								<label>{{__('site.details_ar')}}</label>
+								<div>{{$product->details_ar}}</div>
+							</div>
+
+							<div class="form-group col-6 col-md-3">
+								<label>{{__('site.details_en')}}</label>
+								<div>{{$product->details_en}}</div>
+							</div>
+
+					
+
 								<div class="col-6 col-md-2">
-									<p class="key">{{__('site.delete')}}</p>
-									<form action="{{route('products.destroy',$product->id)}}" method="post">
-										@csrf
-										{{ method_field('delete') }}
-										<button type="submit" class="btn btn-danger delete"><i class="fa fa-trash-alt"></i>
-										</button>
-									</form>
-								</div>
-								@endcan
+                                    <p class="key">{{__('site.actions')}}</p>
+                                    <div class="actions-dropdown">
+                                        <button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </button>
+
+                                        <div class="dropdown-menu">
+                                            @can('edit')
+                                            <a href="{{route('products.edit',$product->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
+                                            @endcan
+                                            @can('delete')
+                                            <form action="{{route('products.destroy',$product->id)}}" method="POST" class="dropdown-item">
+                                                @csrf
+                                                {{ method_field('delete') }}
+                                                <a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
+                                            </form>
+                                            @endcan
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
 								@endforeach
 							</div>
 						</div>
 					</div>
 					<div class="card">
 						<div class="card-body">
-
 							<div class="form-group row">
 								<div class="col-6 col-md-2">
-									<label for="image" class="col-form-label">{{__('site.image')}}</label>
+									<label>{{__('site.image')}}</label>
 								</div>
 								<div class="col-6 col-md-6">
 									<img src="{{asset('gallery/'.$product->photo)}}" style="width:250px;height:150px;">
@@ -101,7 +143,7 @@
 								@can('edit')
 								<div class="form-group col-md-2">
 									<p class="key">{{__('site.edit')}}</p>
-									<a href="{{route('product.editMainImages',$product->id)}}" class="btn btn-info">
+									<a href="{{route('product.editMainImages',$product->id)}}" class="btn btn-warning">
 										<i class="fa fa-edit"></i></a>
 									</div>
 									@endcan
@@ -123,7 +165,7 @@
 
 							<div class="form-group row">
 								<div class="col-6 col-md-2">
-									<label for="SmaillImage" class="col-form-label">{{__('site.SmallImage')}}</label>
+									<label>{{__('site.SmallImage')}}</label>
 								</div>
 								<div class="col-6 col-md-6">
 									<img src="{{asset('gallery/'.$product->small_photo)}}" style="width:250px;height:100px;">
@@ -131,7 +173,7 @@
 								@can('edit')
 								<div class="col-md-2">
 									<p class="key">{{__('site.edit')}}</p>
-									<a href="{{route('product.editMainImages',$product->id)}}" class="btn btn-info">
+									<a href="{{route('product.editMainImages',$product->id)}}" class="btn btn-warning">
 										<i class="fa fa-edit"></i></a>
 									</div>
 									@endcan
@@ -148,7 +190,6 @@
 										</form>
 									</div>
 									@endcan
-
 							</div>
 
 
@@ -168,7 +209,7 @@
 													<input type="file" class="form-control" name="gallery[]" multiple>
 												</div>
 												<div class="col-sm-4">
-													<button type="submit" class="btn btn-info prevent-multiple-submits">{{__('site.add')}}</button>
+													<button type="submit" class="btn btn-warning">{{__('site.add')}}</button>
 												</div>
 											</div>
 										</form>
@@ -188,7 +229,7 @@
 										@can('edit')
 										<div class="col-6 col-md-2">
 											<p class="key">{{__('site.edit')}}</p>
-											<a href="{{route('galleries.edit',$gallery->id)}}" class="btn btn-info">
+											<a href="{{route('galleries.edit',$gallery->id)}}" class="btn btn-warning">
 												<i class="fa fa-edit"></i></a>
 											</div>
 											@endcan
@@ -204,12 +245,10 @@
 												</form>
 											</div>
 											@endcan
-
 											@endforeach
 											@endif
 										</div>
 									</div>
-
 								</div>
 							</div>
 						</div>
