@@ -107,7 +107,33 @@
               </li>
             </ul>
           </li>
-          @endcan('customs')
+          @endcan('partners')
+
+          @can('contacts')
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ request()->routeIs('contacts.*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                {{ __('site.contacts') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('contacts.index') }}" class="nav-link ">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>{{ __('site.show') }}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('contacts.create') }}" class="nav-link">
+                  <i class="fas fa-plus nav-icon"></i>
+                  <p>{{ __('site.add') }}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endcan('partners')
 
           @can('projects')
           <li class="nav-item">
@@ -133,7 +159,7 @@
               </li>
             </ul>
           </li>
-          @endcan('customs')
+          @endcan('projects')
 
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('sliders.*') ? 'active' : '' }}">
@@ -182,7 +208,7 @@
               </li>
             </ul>
           </li>
-@can('products')
+          @can('products')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>

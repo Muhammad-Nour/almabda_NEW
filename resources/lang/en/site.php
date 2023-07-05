@@ -20,6 +20,10 @@ return [
     'attachment'=>'Attachment',
     'partners'=>'Partners',
     'projects'=>'Projects',
+    'contacts'=>'Contacts',
+    'message'=>'Message',
+    'notes'=>'Notes',
+    'subject'=>'Subject',
 
     'key'=>'Key',
     'edit'=>'Edit',

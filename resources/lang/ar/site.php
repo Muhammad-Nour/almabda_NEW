@@ -21,6 +21,10 @@ return [
 	'partners'=>'شركاءنا',
 	'actions'=>'الإجراءات',
 	'projects'=>'المشاريع',
+	'contacts'=>'رسائل العملاء',
+	'message'=>'الرسالة',
+	'notes'=>'الملاحظات',
+	'subject'=>'الموضوع',
 
 	'edit'=>'تعديل',
 	'delete'=>'حذف',

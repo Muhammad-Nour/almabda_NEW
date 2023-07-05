@@ -15,6 +15,7 @@ use App\Http\Controllers\CustomController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,6 +53,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('customs', CustomController::class);
     Route::resource('partners', PartnerController::class);
     Route::resource('projects', ProjectController::class);
+    Route::resource('contacts', ContactController::class);
 
     Route::get('products/{product}/editMainImages',[ProductController::class,'editMainImages'])->name('product.editMainImages');
 
