@@ -27,7 +27,6 @@ class ProjectRequest extends FormRequest
         return [
             'name_ar'=>['string','required',Rule::unique('projects')->ignore($this->route()->parameter('project'))],
             'name_en'=>['string','required',Rule::unique('projects')->ignore($this->route()->parameter('project'))],
-            'photo'=>'string|required',
             'admin_id'=>'string',
         ];
     }

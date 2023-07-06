@@ -24,7 +24,7 @@
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form action="{{route('projects.store')}}" method="post">
+				<form action="{{route('projects.store')}}" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="card-body">
 						<div class="form-group row">
@@ -47,6 +47,12 @@
 								<input type="file" class="form-control" name="photo">
 							</div>
 						</div>
+						<div class="form-group  row">
+								<label class="col-sm-2 col-form-label">{{__('site.add_gallery')}}</label>
+								<div class="col-sm-10">
+								<input type="file" class="form-control" name="gallery[]" multiple>
+							</div>
+							</div>
 					</div>
 					<!-- /.card-body -->
 					<div class="card-footer">

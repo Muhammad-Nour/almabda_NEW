@@ -17,6 +17,11 @@ class Project extends Model
 
     public function admin()
     {
-        return $this->belongsTo('App\Models\ِAdmin');
+        return $this->belongsTo('App\Models\Admin');
+    }
+
+    public function gallery()
+    {
+        return $this->hasMany('App\Models\ProjectGallery');
     }
 }

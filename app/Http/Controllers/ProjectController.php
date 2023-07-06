@@ -3,10 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\ProjectGallery;
+
 use App\Http\Requests\ProjectRequest;
+use App\Http\Requests\ProjectGalleryRequest;
+
+use App\Traits\UploadProjectGallery;
+use App\Traits\UploadProjectPhoto;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
+
+    use UploadProjectGallery;
+    use UploadProjectPhoto;
     /**
      * Display a listing of the resource.
      *
@@ -36,12 +50,46 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreProjectRequest  $request
+     * @param  \App\Http\Requests\ProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest $request)
+    public function store(ProjectRequest $request , )
     {
-        project::create($request->validated());
+
+        DB::beginTransaction();
+
+        $request->validated();
+
+        $path  = $this->UploadProjectPhoto($request,'projects');
+
+        $projects = Project::create([
+            'photo'=>$path,
+            'name_ar'=>$request->name_ar,
+            'name_en'=>$request->name_en,
+            'created_at' => $request->created_at,
+            'updated_at' => $request->updated_at,
+            'admin_id' => Auth::user()->id
+        ]);
+
+        if($request->hasFile('gallery'))
+        {
+            $files = $request->file('gallery');
+
+            foreach($files as $file){
+
+                $filename = $file->getClientOriginalName();
+
+                $path  = $file->storeAs('projects',$filename,'galleries');
+
+                ProjectGallery::create([
+                    'project_id' => $projects->id,
+                    'photo' => $path,
+                    'admin_id' => Auth::user()->id
+                ]);
+            }
+        }
+
+        DB::commit();
 
         return redirect()->back()->withInput()->with('msg',__('site.addedMessage'));
     }

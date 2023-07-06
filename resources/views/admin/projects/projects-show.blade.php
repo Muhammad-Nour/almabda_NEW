@@ -24,7 +24,7 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="row">
-								<div class="col-6 col-md-2">
+								<div class="col-6 col-md-1">
 									<p class="key">{{__('site.code')}}</p>
 									<p class="value">{{$project->id}}</p>
 								</div>
@@ -37,13 +37,10 @@
 									<p class="value">{{$project->name_en}}</p>
 								</div>
 
-								<div class="col-6 col-md-6">
+								<div class="col-6 col-md-3">
 									<p class="key">{{__('site.image')}}</p>
-									<img src="{{asset('design-site/images/customs/'.$project->photo)}}"style="width:75px;height:75px;">
+									<img src="{{asset('gallery/'.$project->photo)}}"style="width:75px;height:75px;">
 								</div>
-
-
-					
 
 								<div class="col-6 col-md-2">
                                     <p class="key">{{__('site.actions')}}</p>
