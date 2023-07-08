@@ -53,7 +53,7 @@ class ProjectController extends Controller
      * @param  \App\Http\Requests\ProjectRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProjectRequest $request , )
+    public function store(ProjectRequest $request)
     {
 
         DB::beginTransaction();
@@ -114,7 +114,6 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         return view('admin.projects.projects-edit',compact('project'));
-        
     }
 
     /**
@@ -126,9 +125,44 @@ class ProjectController extends Controller
      */
     public function update(ProjectRequest $request, Project $project)
     {
-        $project->update($request->validated());
+        $request->validated();
+
+        if($request->hasFile('photo'))
+        {
+            
+        $path  = $this->UploadProjectPhoto($request,'projects');
+            
+            $project->update([
+                'photo' => $path,
+                'name_ar'=>$request->name_ar,
+                'name_en'=>$request->name_en,
+                'updated_at' => $request->updated_at,
+                'admin_id' => Auth::user()->id,
+                'updated_by' => Auth::user()->id
+            ]);
+        }else{
+
+            $project->update([
+                'name_ar'=>$request->name_ar,
+                'name_en'=>$request->name_en,
+                'updated_at' => $request->updated_at,
+                'admin_id' => Auth::user()->id,
+                'updated_by' => Auth::user()->id
+            ]);
+
+        }
 
         return redirect(route('projects.index'))->with('msg',__('site.updatedMessage'));
+    }
+
+    public function getDetails(Project $project)
+    {
+        $ProjectGallery = ProjectGallery::where('project_id',$project->id)->get();
+
+        $projects = Project::where('id',$project->id)->get();
+
+        return view('admin.projects.projects-details',
+            compact('ProjectGallery','projects','project'));
     }
 
     /**

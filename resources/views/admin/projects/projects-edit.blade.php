@@ -25,7 +25,7 @@
 				<!-- /.card-header -->
 				<!-- form start -->
 				<form action="{{route('projects.update',$project->id)}}" 
-					method="post">
+					method="post" enctype="multipart/form-data">
 					@csrf
 					{{ method_field('put') }}
 					<div class="card-body">

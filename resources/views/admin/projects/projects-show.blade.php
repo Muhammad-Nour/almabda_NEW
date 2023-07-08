@@ -50,6 +50,8 @@
                                         </button>
 
                                         <div class="dropdown-menu">
+                                        	<a href="{{route('project.details',$project->id)}}" class="dropdown-item">
+									<i class="fa fa-info-circle"></i>{{__('site.details')}}</a>
                                             @can('edit')
                                             <a href="{{route('projects.edit',$project->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
                                             @endcan

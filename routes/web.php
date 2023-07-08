@@ -62,6 +62,8 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::PUT('products/{product}/deleteMainImage',[ProductController::class,'deleteMainImages'])->name('product.deleteMainImages');
 
     Route::get('products/{product}/details',[ProductController::class,'getDetails'])->name('product.details');
+    Route::get('projects/{project}/details',[ProjectController::class,'getDetails'])->name('project.details');
+
 
     Route::post('products/add/images',[ProductController::class,'addImage'])->name('add.images');
 });
