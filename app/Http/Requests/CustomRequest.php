@@ -26,11 +26,6 @@ class CustomRequest extends FormRequest
     public function rules()
     {
         return [
-            'title_en'=>
-            ['required','string',Rule::unique('customs')->ignore($this->route()->parameter('custom'))],
-            'title_ar'=>
-            ['required','string',Rule::unique('customs')->ignore($this->route()->parameter('custom'))],
-
             'description_ar'=>'string|required',
             'description_en'=>'string|required',
         ];
@@ -40,7 +35,6 @@ class CustomRequest extends FormRequest
         return [
             'required'  => 'الحقل مطلوب',
             'string'    => 'الحقل يجب أن يكون نصياً',
-            'unique'    => 'الحقل مكرر',
         ];
     }
 

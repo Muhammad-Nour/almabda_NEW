@@ -9,13 +9,16 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CategoryController;
-use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\CustomController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProjectGalleryController;
+
+
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +47,19 @@ Route::middleware('auth:admin')->group(function(){
 });
 
 Route::group(['middleware' => ['auth:admin']], function() {
+
+     Route::get('products/{product}/editMainImages',[ProductController::class,'editMainImages'])->name('product.editMainImages');
+
+    Route::put('products/{product}/updateMainImage',[ProductController::class,'updateMainImage'])->name('product.updateMainImage');
+
+    Route::PUT('products/{product}/deleteMainImage',[ProductController::class,'deleteMainImages'])->name('product.deleteMainImages');
+
+    Route::post('products/add/images',[ProductController::class,'addImage'])->name('add.ProductImages');
+    Route::get('products/{product}/details',[ProductController::class,'getDetails'])->name('product.details');
+
+    Route::post('projects/add/images',[ProjectController::class,'addImage'])->name('add.ProjectImages');
+    Route::get('projects/{project}/details',[ProjectController::class,'getDetails'])->name('project.details');
+
     Route::resource('products', ProductController::class);
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
@@ -54,18 +70,11 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('partners', PartnerController::class);
     Route::resource('projects', ProjectController::class);
     Route::resource('contacts', ContactController::class);
-
-    Route::get('products/{product}/editMainImages',[ProductController::class,'editMainImages'])->name('product.editMainImages');
-
-    Route::put('products/{product}/updateMainImage',[ProductController::class,'updateMainImage'])->name('product.updateMainImage');
-
-    Route::PUT('products/{product}/deleteMainImage',[ProductController::class,'deleteMainImages'])->name('product.deleteMainImages');
-
-    Route::get('products/{product}/details',[ProductController::class,'getDetails'])->name('product.details');
-    Route::get('projects/{project}/details',[ProjectController::class,'getDetails'])->name('project.details');
+    Route::resource('projectsgalleries', ProjectGalleryController::class);
 
 
-    Route::post('products/add/images',[ProductController::class,'addImage'])->name('add.images');
+   
+
 });
 
 Route::middleware([

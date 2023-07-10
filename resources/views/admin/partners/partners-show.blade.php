@@ -37,13 +37,10 @@
 									<p class="value">{{$partner->name_en}}</p>
 								</div>
 
-								<div class="col-6 col-md-6">
+								<div class="col-6 col-md-2">
 									<p class="key">{{__('site.image')}}</p>
 									<img src="{{asset('design-site/images/customs/'.$partner->photo)}}"style="width:75px;height:75px;">
 								</div>
-
-
-					
 
 								<div class="col-6 col-md-2">
                                     <p class="key">{{__('site.actions')}}</p>

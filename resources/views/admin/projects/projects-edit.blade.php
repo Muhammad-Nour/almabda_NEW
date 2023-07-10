@@ -29,29 +29,23 @@
 					@csrf
 					{{ method_field('put') }}
 					<div class="card-body">
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.name_ar')}}</label>
-							<div class="col-sm-10">
+						<div class="form-group">
+							<label>{{__('site.name_ar')}}</label>
+						
 								<input type="text" class="form-control" name="name_ar" required 
 								value="{{ isset($project) ? $project->name_ar : ''}}">
-							</div>
 						</div>
-					</div>
-					<div class="card-body">
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.name_en')}}</label>
-							<div class="col-sm-10">
+						<div class="form-group">
+							<label>{{__('site.name_en')}}</label>
 								<input type="text" class="form-control" name="name_en" required 
 								value="{{ isset($project) ? $project->name_en : ''}}">
-							</div>
 						</div>
+						<div class="form-group">
+						<strong>{{__('site.image')}}</strong>
+						<img src="{{asset('gallery/'.$project->photo)}}" style="width:100px;height:100px;">
+						<input type="file" class="form-control" name="photo">
 					</div>
-
-					<div class="col-6 col-md-5">
-									<strong>{{__('site.image')}}</strong>
-									<img src="{{asset('gallery/'.$project->photo)}}" style="width:100px;height:100px;">
-									<input type="file" class="form-control" name="photo">
-								</div>
+					</div>
 					<!-- /.card-body -->
 					<div class="card-footer">
 						<button type="submit" class="btn btn-style">{{__('site.update')}}</button>

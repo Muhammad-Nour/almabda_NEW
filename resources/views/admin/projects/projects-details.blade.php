@@ -19,13 +19,13 @@
 
 	<div class="col-md-11 m-auto">
 		@include('partial.alerts')
-		@if($projects->count() > 0)
+	
 		<div class="row">
 			<div class="col-md-12 single-row">
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
-							@foreach($projects as $project)
+							
 							<div class="col-6 col-md-1">
 									<p class="key">{{__('site.code')}}</p>
 									<p class="value">{{$project->id}}</p>
@@ -66,7 +66,7 @@
 								</div>
 							</div>
 
-							@endforeach
+						
 						</div>
 					</div>
 				</div>
@@ -79,7 +79,7 @@
 								<i class="fa fa-plus"></i>&nbsp;&nbsp;إضافة صور
 							</button>
 
-							<form class="form-horizontal" action="{{route('add.images')}}" method="post" enctype="multipart/form-data" id="add_image_form" style="display: none;margin-top: 15px;">
+							<form class="form-horizontal" action="{{route('add.ProjectImages')}}" method="post" enctype="multipart/form-data" id="add_image_form" style="display: none;margin-top: 15px;">
 								@csrf
 
 								<input type="hidden" name="project_id" value="{{$project->id}}">
@@ -98,18 +98,18 @@
 						<div class="row">
 
 							<?php $counter = 1 ; ?>
-							@if($ProjectGallery->count() > 0)
-							@foreach($ProjectGallery as $gallery)
+							@if($galleries->count() > 0)
+							@foreach($galleries as $proGallery)
 
 							<div class="col-6 col-md-6" style="margin-bottom:15px">
 								<?php echo $counter++ ; ?> &nbsp;&nbsp;
-								<img src="{{asset('gallery/'.$gallery->photo)}}" style="width:100px;height:100px;">
+								<img src="{{asset('gallery/'.$proGallery->photo)}}" style="width:100px;height:100px;">
 							</div>
 
 							@can('edit')
 							<div class="col-6 col-md-2">
 								<p class="key">{{__('site.edit')}}</p>
-								<a href="{{route('galleries.edit',$gallery->id)}}" class="btn btn-warning">
+								<a href="{{route('projectsgalleries.edit',$proGallery->id)}}" class="btn btn-warning">
 									<i class="fa fa-edit"></i></a>
 								</div>
 								@endcan
@@ -117,7 +117,7 @@
 								@can('delete')
 								<div class="col-6 col-md-2">
 									<p class="key">{{__('site.delete')}}</p>
-									<form action="{{route('galleries.destroy',$gallery->id)}}" method="post">
+									<form action="{{route('projectsgalleries.destroy',$proGallery->id)}}" method="post">
 										@csrf
 										{{ method_field('delete') }}
 										<button type="submit" class="btn btn-danger delete"><i class="fa fa-trash-alt"></i>
@@ -132,7 +132,7 @@
 					</div>
 				</div>
 			</div>
-			@endif
+		
 		</div>
 	</div>
 	@stop

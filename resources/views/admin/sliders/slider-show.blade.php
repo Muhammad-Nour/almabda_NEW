@@ -48,15 +48,12 @@
 									<p class="key">{{__('site.description_en')}}</p>
 									<p class="value">{{$slider->description_en}}</p>
 								</div>
-								
-
 								<div class="col-6 col-md-2">
                                     <p class="key">{{__('site.actions')}}</p>
                                     <div class="actions-dropdown">
                                         <button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-h"></i>
                                         </button>
-
                                         <div class="dropdown-menu">
                                             @can('edit')
                                             <a href="{{route('sliders.edit',$slider->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>

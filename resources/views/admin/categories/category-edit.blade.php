@@ -29,19 +29,15 @@
 					@csrf
 					{{ method_field('put') }}
 					<div class="card-body">
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.name_ar')}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="name_ar" required 
-								value="{{ isset($category) ? $category->name_ar : ''}}">
-							</div>
+						<div class="form-group">
+							<label >{{__('site.name_ar')}}</label>
+							<input type="text" class="form-control" name="name_ar" required 
+							value="{{ isset($category) ? $category->name_ar : ''}}">
 						</div>
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.name_en')}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="name_en" required 
-								value="{{ isset($category) ? $category->name_en : ''}}">
-							</div>
+						<div class="form-group">
+							<label >{{__('site.name_en')}}</label>
+							<input type="text" class="form-control" name="name_en" required 
+							value="{{ isset($category) ? $category->name_en : ''}}">
 						</div>
 					</div>
 					<!-- /.card-body -->

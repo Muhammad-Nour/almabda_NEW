@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\custom;
+use App\Traits\UploadPhotoCustom;
 use App\Http\Requests\CustomRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class CustomController extends Controller
 {
+    use UploadPhotoCustom;
     /**
      * Display a listing of the resource.
      *
@@ -77,7 +81,17 @@ class CustomController extends Controller
      */
     public function update(CustomRequest $request, Custom $custom)
     {
-        $custom->update($request->validated());
+        $request->validated();
+
+        $path  = $this->UploadPhotoCustom($request,'custom');
+
+        $custom->update([
+
+            'photo'=>$path,
+            'description_ar'=>$request->description_ar,
+            'description_en'=>$request->description_en,
+            'updated_by' => Auth::user()->id
+        ]);
 
         return redirect(route('customs.index'))->with('msg',__('site.updatedMessage'));
     }

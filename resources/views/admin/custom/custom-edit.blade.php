@@ -20,52 +20,30 @@
 			@include('partial.alerts')
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">{{__('site.update_data')}}</h3>
+					<h3 class="card-title">{{__('site.edit')}}</h3>
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
 				<form action="{{route('customs.update',$custom->id)}}" 
-					method="post">
+					method="post" enctype='multipart/form-data'>
 					@csrf
 					{{ method_field('put') }}
-					<div class="card-body">
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.title_ar')}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="title_ar" required 
-								value="{{ isset($custom) ? $custom->title_ar : ''}}">
-							</div>
-						</div>
-					</div>
-					<div class="card-body">
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.title_en')}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="title_en" required 
-								value="{{ isset($custom) ? $custom->title_en : ''}}">
-							</div>
-						</div>
-					</div>
 
 					<div class="card-body">
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.description_ar')}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="description_ar" required 
-								value="{{ isset($custom) ? $custom->description_ar : ''}}">
-							</div>
+						<div class="form-group">
+							<label>{{__('site.description_ar')}}</label>
+							<textarea class="form-control" name="description_ar" value="{{$custom->description_ar}}" required>{{$custom->description_ar}}</textarea>
 						</div>
-					</div>
-
-					<div class="card-body">
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.description_en')}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="description_en" required 
-								value="{{ isset($custom) ? $custom->description_en : ''}}">
-							</div>
+						<div class="form-group">
+							<label>{{__('site.description_en')}}</label>
+							<textarea class="form-control" name="description_en" value="{{$custom->description_en}}" required>{{$custom->description_en}}</textarea>
 						</div>
+					<div class="form-group">
+						<strong>{{__('site.image')}}</strong>
+						<img src="{{asset('gallery/'.$custom->photo)}}" style="width:100px;height:100px;">
+						<input type="file" class="form-control" name="photo">
 					</div>
+				</div>
 
 					<!-- /.card-body -->
 					<div class="card-footer">

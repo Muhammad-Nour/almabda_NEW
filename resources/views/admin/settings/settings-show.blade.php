@@ -36,40 +36,24 @@
 									<p class="key">{{__('site.value')}}</p>
 									<p class="value">{{$setting->value}}</p>
 								</div>
-					
-
+								@can('edit')
 								<div class="col-6 col-md-2">
-                                    <p class="key">{{__('site.actions')}}</p>
-                                    <div class="actions-dropdown">
-                                        <button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-h"></i>
-                                        </button>
-
-                                        <div class="dropdown-menu">
-                                            @can('edit')
-                                            <a href="{{route('settings.edit',$setting->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
-                                            @endcan
-                                            @can('delete')
-                                            <form action="{{route('settings.destroy', $setting->id)}}" method="POST" class="dropdown-item">
-                                                @csrf
-                                                {{ method_field('delete') }}
-                                                <a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
-                                            </form>
-                                            @endcan
-                                        </div>
-                                    </div>
-                                </div>
+									<p class="key">{{__('site.edit')}}</p>
+									<a href="{{route('settings.edit',$setting->id)}}" class="btn btn-warning">
+										<i class="fa fa-edit"></i></a>
+									</div>
+									@endcan
+								</div>
 							</div>
 						</div>
 					</div>
+					@endforeach
 				</div>
-				@endforeach
 			</div>
+			@endif
+			@isset($paginate)
+			{{ $settings->links() }}
+			@endisset
 		</div>
-		@endif
-		@isset($paginate)
-		{{ $settings->links() }}
-		@endisset
 	</div>
-</div>
-@stop
+	@stop

@@ -28,38 +28,28 @@
 					@csrf
 					{{method_field('PUT')}}
 					<div class="card-body">
-						<div class="form-group row">
+						<div class="form-group">
 							<label>{{__('site.title_ar')}}</label>
-							<div class="col-sm-10">
-								<input class="form-control" name="title_ar" value="{{$slider->title_ar}}">
-							</div>
+							<input class="form-control" name="title_ar" value="{{$slider->title_ar}}">
 						</div>
-						<div class="form-group row">
+						<div class="form-group">
 							<label>{{__('site.title_en')}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="title_en" value="{{$slider->title_en}}">
-							</div>
+							<input type="text" class="form-control" name="title_en" value="{{$slider->title_en}}">
 						</div>
-						<div class="form-group row">
+						<div class="form-group">
 							<label>{{__('site.description_ar')}}</label>
-							<div class="col-sm-10">
-								<textarea class="form-control" name="description_ar" value="{{$slider->description_ar}}" required>{{$slider->description_ar}}
-								</textarea>
-							</div>
+							<textarea class="form-control" name="description_ar" value="{{$slider->description_ar}}" required>{{$slider->description_ar}}
+							</textarea>
 						</div>
-						<div class="form-group row">
+						<div class="form-group">
 							<label>{{__('site.description_en')}}</label>
-							<div class="col-sm-10">
-								<textarea class="form-control" name="description_en" value="{{$slider->description_en}}" required>{{$slider->description_en}}
-								</textarea>
-							</div>
+							<textarea class="form-control" name="description_en" value="{{$slider->description_en}}" required>{{$slider->description_en}}
+							</textarea>
 						</div>
-						<div class="form-group row">
+						<div class="form-group">
 							<label>{{__('site.image')}}</label>
-							<div class="col-sm-10">
-								<input type="file" class="form-control" name="image">
-								<img src="{{asset('gallery/'.$slider->photo)}}" style="width:200px%;height:200px;">
-							</div>
+							<input type="file" class="form-control" name="image">
+							<img src="{{asset('gallery/'.$slider->photo)}}" style="width:200px%;height:200px;">
 						</div>
 					</div>
 					<!-- /.card-body -->

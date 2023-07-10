@@ -27,10 +27,4 @@ class ProjectGalleryRequest extends FormRequest
             //
         ];
     }
-    public function validated()
-    {
-        $data =  parent::validated();
-
-        return array_merge($data,['admin_id' => auth()->id()]);
-    }
 }

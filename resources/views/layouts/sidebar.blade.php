@@ -49,12 +49,6 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="{{ route('settings.create') }}" class="nav-link">
-                  <i class="fas fa-plus nav-icon"></i>
-                  <p>{{ __('site.add') }}</p>
-                </a>
-              </li>
             </ul>
           </li>
           @can('customs')
@@ -71,12 +65,6 @@
                 <a href="{{ route('customs.index') }}" class="nav-link ">
                   <i class="fas fa-list nav-icon"></i>
                   <p>{{ __('site.show') }}</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('customs.create') }}" class="nav-link">
-                  <i class="fas fa-plus nav-icon"></i>
-                  <p>{{ __('site.add') }}</p>
                 </a>
               </li>
             </ul>
@@ -271,12 +259,6 @@
                 <a href="{{ route('users.index') }}" class="nav-link ">
                   <i class="fas fa-list nav-icon"></i>
                   <p>{{ __('site.show') }}</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('users.create') }}" class="nav-link">
-                  <i class="fas fa-plus nav-icon"></i>
-                  <p>{{ __('site.add') }}</p>
                 </a>
               </li>
             </ul>

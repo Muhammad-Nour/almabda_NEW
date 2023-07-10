@@ -19,7 +19,7 @@
 			@include('partial.alerts')
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">{{__('site.update_data')}}</h3>
+					<h3 class="card-title">{{__('site.edit')}}</h3>
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
@@ -28,11 +28,9 @@
 					@csrf
 					{{method_field('put')}}
 					<div class="card-body">
-						<div class="form-group row">
+						<div class="form-group">
 							<label>{{__('site.name')}}</label>
-							<div class="col-sm-6">
-								<input type="text" class="form-control" name="name" value="{{$role->name}}" required>
-							</div>
+							<input type="text" class="form-control" name="name" value="{{$role->name}}" required>
 						</div>
 						<div class="row">
 							{{__('site.roles')}} | {{$role->name}}

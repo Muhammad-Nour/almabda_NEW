@@ -20,7 +20,7 @@
 			@include('partial.alerts')
 			<div class="card">
 				<div class="card-header">
-					<h3 class="card-title">{{__('site.update_data')}}</h3>
+					<h3 class="card-title">{{__('site.edit')}}</h3>
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
@@ -29,22 +29,15 @@
 					@csrf
 					{{ method_field('put') }}
 					<div class="card-body">
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.key')}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="key" required 
-								value="{{ isset($setting) ? $setting->key : ''}}">
-							</div>
+						<div class="form-group">
+							<label>{{__('site.key')}}</label>
+							<input type="text" class="form-control" name="key" required 
+							value="{{ isset($setting) ? $setting->key : ''}}">
 						</div>
-					</div>
-
-					<div class="card-body">
-						<div class="form-group row">
-							<label class="col-sm-2 col-form-label">{{__('site.value')}}</label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="value" required 
-								value="{{ isset($setting) ? $setting->value : ''}}">
-							</div>
+						<div class="form-group">
+							<label>{{__('site.value')}}</label>
+							<input type="text" class="form-control" name="value" required 
+							value="{{ isset($setting) ? $setting->value : ''}}">
 						</div>
 					</div>
 					<!-- /.card-body -->

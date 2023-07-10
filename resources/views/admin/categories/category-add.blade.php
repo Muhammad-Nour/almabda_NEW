@@ -24,28 +24,26 @@
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form  action="{{route('categories.store')}}" method="post" id="add">
+				<form action="{{route('categories.store')}}" method="post" id="add">
 					@csrf
 					<div class="card-body">
 						<div class="form-group">
 							<label>{{__('site.name_ar')}}</label>
-								<input type="text" class="form-control" name="name_ar" required 
-							    value="{{old('name_ar')}}">
+							<input type="text" class="form-control" name="name_ar" required 
+							value="{{old('name_ar')}}">
 						</div>
-					</div>
-					<div class="card-body">
 						<div class="form-group">
 							<label>{{__('site.name_en')}}</label>
-								<input type="text" class="form-control" name="name_en" required 
-							    value="{{old('name_en')}}">
+							<input type="text" class="form-control" name="name_en" required 
+							value="{{old('name_en')}}">
 						</div>
 					</div>
 					<!-- /.card-body -->
 					<div class="card-footer">
 						<button type="submit" class="btn btn-style">
-								<i class="fa fa-plus"></i> 
-								{{__('site.add')}}
-							</button>
+							<i class="fa fa-plus"></i> 
+							{{__('site.add')}}
+						</button>
 					</div>
 					<!-- /.card-footer -->
 				</form>

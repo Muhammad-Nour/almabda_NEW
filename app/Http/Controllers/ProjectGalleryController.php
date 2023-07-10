@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProjectGallery;
-use App\Http\Requests\StoreProjectGalleryRequest;
-use App\Http\Requests\UpdateProjectGalleryRequest;
+use App\Models\Project;
+use Illuminate\Http\Request;
+use App\Http\Requests\ProjectGalleryRequest;
 
 class ProjectGalleryController extends Controller
 {
@@ -56,10 +57,11 @@ class ProjectGalleryController extends Controller
      * @param  \App\Models\ProjectGallery  $projectGallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProjectGallery $projectGallery)
+    public function edit(ProjectGallery $projectgallery)
     {
-        //
+        return view('admin.projects.projects-edit-gallery',compact('projectgallery'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -68,9 +70,22 @@ class ProjectGalleryController extends Controller
      * @param  \App\Models\ProjectGallery  $projectGallery
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateProjectGalleryRequest $request, ProjectGallery $projectGallery)
+    public function update(Request $request, ProjectGallery $gallery)
     {
-        //
+        if($request->hasFile('gallery'))
+        {
+            $file = $request->file('gallery');
+
+            $filename = $file->getClientOriginalName();
+
+            $path  = $file->storeAs('projects',$filename,'galleries');
+
+            $gallery->update([
+                'photo' => $path,
+            ]);
+        }
+        
+        return redirect(route('project.details',$gallery->project_id))->with('msg',__('site.updatedMessage'));
     }
 
     /**
@@ -79,8 +94,8 @@ class ProjectGalleryController extends Controller
      * @param  \App\Models\ProjectGallery  $projectGallery
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProjectGallery $projectGallery)
+    public function destroy(ProjectGallery $gallery)
     {
-        //
+        return $gallery->id;
     }
 }

@@ -129,7 +129,7 @@ class ProjectController extends Controller
 
         if($request->hasFile('photo'))
         {
-            
+
         $path  = $this->UploadProjectPhoto($request,'projects');
             
             $project->update([
@@ -157,12 +157,35 @@ class ProjectController extends Controller
 
     public function getDetails(Project $project)
     {
-        $ProjectGallery = ProjectGallery::where('project_id',$project->id)->get();
-
-        $projects = Project::where('id',$project->id)->get();
+        $galleries = ProjectGallery::where('project_id',$project->id)->get();
 
         return view('admin.projects.projects-details',
-            compact('ProjectGallery','projects','project'));
+            compact('galleries','project'));
+    }
+
+    public function addImage(Project $project , Request $request)
+    {
+        if($request->hasFile('gallery'))
+        {
+            $files = $request->file('gallery');
+
+            foreach($files as $file){
+
+                $filename = $file->getClientOriginalName();
+
+                $path  = $file->storeAs('projects',$filename,'galleries');
+
+                ProjectGallery::create([
+                    'project_id' => $request->project_id,
+                    'photo' => $path,
+                    'admin_id' => Auth::user()->id,
+                    'updated_by' => Auth::user()->id
+                ]);
+            }
+        }
+
+        return redirect()->back()->withInput()->with('msg',__('site.addedMessage'));
+
     }
 
     /**

@@ -67,8 +67,6 @@
 								<p class="value">{{$product->discount}}</p>
 							</div>
 
-							
-
 							<div class="form-group col-6 col-md-3">
 								<label>{{__('site.notify')}} : {{$product->notify}}</label>
 							</div>
@@ -101,8 +99,6 @@
 								<div>{{$product->details_en}}</div>
 							</div>
 
-					
-
 								<div class="col-6 col-md-2">
                                     <p class="key">{{__('site.actions')}}</p>
                                     <div class="actions-dropdown">
@@ -124,9 +120,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
 								@endforeach
 							</div>
 						</div>
@@ -199,7 +192,7 @@
 											<i class="fa fa-plus"></i>&nbsp;&nbsp;إضافة صور
 										</button>
 
-										<form class="form-horizontal" action="{{route('add.images')}}" method="post" enctype="multipart/form-data" id="add_image_form" style="display: none;margin-top: 15px;">
+										<form class="form-horizontal" action="{{route('add.ProductImages')}}" method="post" enctype="multipart/form-data" id="add_image_form" style="display: none;margin-top: 15px;">
 											@csrf
 
 											<input type="hidden" name="product_id" value="{{$product->id}}">
