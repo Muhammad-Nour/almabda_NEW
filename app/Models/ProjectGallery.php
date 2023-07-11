@@ -11,7 +11,7 @@ class ProjectGallery extends Model
 
     protected $table = 'project_galleries';
 
-    protected $fillable = [ 'photo','project_id','admin_id','updated_by'];
+    protected $fillable = [ 'photo','project_id','admin_id','created_at','updated_at','updated_by'];
 
     protected $primaryKey = 'id';
 
