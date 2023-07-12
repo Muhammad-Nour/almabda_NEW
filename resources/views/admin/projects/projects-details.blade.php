@@ -109,7 +109,7 @@
 							@can('edit')
 							<div class="col-6 col-md-2">
 								<p class="key">{{__('site.edit')}}</p>
-								<a href="{{route('projectsgalleries.edit',$proGallery->id)}}" class="btn btn-warning">
+								<a href="{{route('project.editGalleryImage',$proGallery->id)}}" class="btn btn-warning">
 									<i class="fa fa-edit"></i></a>
 								</div>
 								@endcan
@@ -117,7 +117,7 @@
 								@can('delete')
 								<div class="col-6 col-md-2">
 									<p class="key">{{__('site.delete')}}</p>
-									<form action="{{route('projectsgalleries.destroy',$proGallery->id)}}" method="post">
+									<form action="{{route('project.deleteGalleryImage',$proGallery->id)}}" method="post">
 										@csrf
 										{{ method_field('delete') }}
 										<button type="submit" class="btn btn-danger delete"><i class="fa fa-trash-alt"></i>

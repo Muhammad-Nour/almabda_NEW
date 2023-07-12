@@ -159,8 +159,10 @@ class ProjectController extends Controller
     {
         $galleries = ProjectGallery::where('project_id',$project->id)->get();
 
+        $projects = Project::where('id',$project->id)->get();
+
         return view('admin.projects.projects-details',
-            compact('galleries','project'));
+            compact('galleries','project','projects'));
     }
 
     public function addImage(Project $project , Request $request)

@@ -48,9 +48,15 @@ Route::middleware('auth:admin')->group(function(){
 
 Route::group(['middleware' => ['auth:admin']], function() {
 
-     Route::get('products/{product}/editMainImages',[ProductController::class,'editMainImages'])->name('product.editMainImages');
+    Route::get('products/{product}/editMainImages',[ProductController::class,'editMainImages'])->name('product.editMainImages');
 
     Route::put('products/{product}/updateMainImage',[ProductController::class,'updateMainImage'])->name('product.updateMainImage');
+
+    Route::get('projects/{gallery}/editGalleryImage',[ProjectGalleryController::class,'edit'])->name('project.editGalleryImage');
+
+    Route::put('projects/{gallery}/updateGalleryImage',[ProjectGalleryController::class,'update'])->name('project.updateGalleryImage');
+
+    Route::delete('projects/{gallery}/deleteGalleryImage',[ProjectGalleryController::class,'destroy'])->name('project.deleteGalleryImage');
 
     Route::PUT('products/{product}/deleteMainImage',[ProductController::class,'deleteMainImages'])->name('product.deleteMainImages');
 
@@ -70,11 +76,6 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('partners', PartnerController::class);
     Route::resource('projects', ProjectController::class);
     Route::resource('contacts', ContactController::class);
-    Route::resource('projectsgalleries', ProjectGalleryController::class);
-
-
-   
-
 });
 
 Route::middleware([

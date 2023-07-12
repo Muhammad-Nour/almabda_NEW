@@ -6,9 +6,15 @@ use App\Models\ProjectGallery;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProjectGalleryRequest;
+use App\Traits\UploadProjectGallery;
+use App\Traits\UploadProjectPhoto;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectGalleryController extends Controller
 {
+    use UploadProjectGallery;
+    use UploadProjectPhoto;
     /**
      * Display a listing of the resource.
      *
@@ -57,9 +63,9 @@ class ProjectGalleryController extends Controller
      * @param  \App\Models\ProjectGallery  $projectGallery
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProjectGallery $projectgallery)
+    public function edit(ProjectGallery $gallery)
     {
-        return view('admin.projects.projects-edit-gallery',compact('projectgallery'));
+        return view('admin.projects.projects-edit-gallery',compact('gallery'));
     }
     
 
@@ -70,7 +76,7 @@ class ProjectGalleryController extends Controller
      * @param  \App\Models\ProjectGallery  $projectGallery
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProjectGallery $gallery)
+    public function update(ProjectGalleryRequest $request, ProjectGallery $gallery)
     {
         if($request->hasFile('gallery'))
         {
@@ -82,6 +88,7 @@ class ProjectGalleryController extends Controller
 
             $gallery->update([
                 'photo' => $path,
+                'updated_by' => auth::user()->id
             ]);
         }
         
@@ -96,6 +103,8 @@ class ProjectGalleryController extends Controller
      */
     public function destroy(ProjectGallery $gallery)
     {
-        return $gallery->id;
+        $gallery->delete();
+
+        return redirect()->back()->withInput()->with('msg',__('site.deletedMessage'));
     }
 }
