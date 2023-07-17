@@ -37,19 +37,17 @@
 									<p class="value">{{$category->name_en}}</p>
 								</div>
 								
-
 								<div class="col-6 col-md-2">
                                     <p class="key">{{__('site.actions')}}</p>
                                     <div class="actions-dropdown">
                                         <button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-h"></i>
                                         </button>
-
                                         <div class="dropdown-menu">
-                                            @can('edit')
+                                            @can('edit_category')
                                             <a href="{{route('categories.edit',$category->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
                                             @endcan
-                                            @can('delete')
+                                            @can('delete_category')
                                             <form action="{{route('categories.destroy', $category->id)}}" method="POST" class="dropdown-item">
                                                 @csrf
                                                 {{ method_field('delete') }}

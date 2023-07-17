@@ -173,6 +173,7 @@
             </ul>
           </li>
 
+          @can('categories')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -188,14 +189,18 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
+              @can('add_category')
               <li class="nav-item">
                 <a href="{{ route('categories.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>
               </li>
+              @endcan('add_category')
             </ul>
           </li>
+          @endcan('categories')
+
           @can('products')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('products.*') ? 'active' : '' }}">
@@ -220,7 +225,7 @@
               </li>
             </ul>
           </li>
-          @endcan
+          @endcan('products')
 
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('admins.*') ? 'active' : '' }}">
