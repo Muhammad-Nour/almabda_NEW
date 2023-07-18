@@ -121,7 +121,35 @@
               </li>
             </ul>
           </li>
-          @endcan('partners')
+          @endcan('contacts')
+
+          @can('news')
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ request()->routeIs('news.*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                {{ __('site.news') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('news.index') }}" class="nav-link ">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>{{ __('site.show') }}</p>
+                </a>
+              </li>
+              @can('add_news')
+              <li class="nav-item">
+                <a href="{{ route('news.create') }}" class="nav-link">
+                  <i class="fas fa-plus nav-icon"></i>
+                  <p>{{ __('site.add') }}</p>
+                </a>
+              </li>
+              @endcan('add_news')
+            </ul>
+          </li>
+          @endcan('news')
 
           @can('projects')
           <li class="nav-item">

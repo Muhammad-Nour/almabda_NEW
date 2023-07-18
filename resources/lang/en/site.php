@@ -24,6 +24,7 @@ return [
     'message'=>'Message',
     'notes'=>'Notes',
     'subject'=>'Subject',
+    'news'=>'News',
 
     'key'=>'Key',
     'edit'=>'Edit',

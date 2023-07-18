@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProjectGalleryController;
 
 
@@ -76,6 +77,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('partners', PartnerController::class);
     Route::resource('projects', ProjectController::class);
     Route::resource('contacts', ContactController::class);
+    Route::resource('news', NewsController::class);
 });
 
 Route::middleware([
