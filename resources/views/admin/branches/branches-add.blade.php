@@ -1,6 +1,6 @@
 @extends('layouts.admin_app')
 
-@section('title', __('site.news'))
+@section('title', __('site.branches'))
 
 @section('css')
 @stop
@@ -9,12 +9,12 @@
 @stop
 
 
-@section('title-page',__('site.news'))
+@section('title-page',__('site.branches'))
 
 @section('content')
 
 <!-- Main content -->
-<div class="main-stage news">
+<div class="main-stage branches">
 	<div class="row">
 		<div class="col-md-7 m-auto">
 			@include('partial.alerts')
@@ -24,7 +24,7 @@
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form action="{{route('news.store')}}" method="post" enctype="multipart/form-data">
+				<form action="{{route('branches.store')}}" method="post" enctype="multipart/form-data">
 					@csrf
 					<div class="card-body">
 						<div class="form-group">
@@ -38,14 +38,20 @@
 							value="{{old('name_en')}}">
 						</div>
 						<div class="form-group">
-								<label>{{__('site.description_ar')}}</label>
-								<textarea class="form-control" name="description_ar" id="description_ar" value="{{old('description_ar')}}" required></textarea>
+								<label>{{__('site.address_ar')}}</label>
+								<textarea class="form-control" name="description_ar" id="address_ar" value="{{old('address_ar')}}" required></textarea>
 							</div>
 
 							<div class="form-group">
-								<label>{{__('site.description_en')}}</label>
-								<textarea class="form-control" name="description_en" id="description_en" value="{{old('description_en')}}" required></textarea>
+								<label>{{__('site.address_en')}}</label>
+								<textarea class="form-control" name="description_en" id="address_en" value="{{old('address_en')}}" required></textarea>
 							</div>
+
+							<div class="form-group">
+							<label>{{__('site.map')}}</label>
+							<input type="text" class="form-control" name="map" required 
+							value="{{old('map')}}">
+						</div>
 
 							<div class="form-grou">
 								<label>{{__('site.add_image')}}</label>

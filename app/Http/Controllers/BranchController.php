@@ -14,7 +14,11 @@ class BranchController extends Controller
      */
     public function index()
     {
-        //
+        $branches = Branch::paginate(10);
+
+        $paginate = true ;
+
+        return view('admin.branches.branches-show',compact('branches'));
     }
 
     /**
@@ -24,7 +28,7 @@ class BranchController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.branches.branches-add');
     }
 
     /**

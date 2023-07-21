@@ -1,6 +1,6 @@
 @extends('layouts.admin_app')
 
-@section('title', __('site.news'))
+@section('title', __('site.branches'))
 
 @section('css')
 @stop
@@ -9,48 +9,48 @@
 @stop
 
 
-@section('title-page', __('site.news'))
+@section('title-page', __('site.branches'))
 
 @section('content')
-<div class="main-stage news">
+<div class="main-stage branches">
 	<div class="row">
 		<div class="col-md-11 m-auto">
 			@include('partial.alerts')
 
-			@if($news->count() > 0)
+			@if($branches->count() > 0)
 			<div class="row">
-				@foreach($news as $new)
+				@foreach($branches as $branch)
 				<div class="col-md-12 single-row">
 					<div class="card">
 						<div class="card-body">
 							<div class="row">
 								<div class="col-6 col-md-3">
 									<p class="key">{{__('site.code')}}</p>
-									<p class="value">{{$new->id}}</p>
+									<p class="value">{{$branch->id}}</p>
 								</div>
 								<div class="col-6 col-md-3">
 									<p class="key">{{__('site.name_ar')}}</p>
-									<p class="value">{{$new->name_ar}}</p>
+									<p class="value">{{$branch->name_ar}}</p>
 								</div>
 								<div class="col-6 col-md-3">
 									<p class="key">{{__('site.name_en')}}</p>
-									<p class="value">{{$new->name_en}}</p>
+									<p class="value">{{$branch->name_en}}</p>
 								</div>
 								<div class="col-6 col-md-3">
 									<p class="key">{{__('site.description_ar')}}</p>
-									<p class="value">{{$new->description_ar}}</p>
+									<p class="value">{{$branch->description_ar}}</p>
 								</div>
 								<div class="col-6 col-md-3">
 									<p class="key">{{__('site.description_en')}}</p>
-									<p class="value">{{$new->description_en}}</p>
+									<p class="value">{{$branch->description_en}}</p>
 								</div>		
 								<div class="col-6 col-md-3">
 									<p class="key">{{__('site.date')}}</p>
-									<p class="value">{{$new->date}}</p>
+									<p class="value">{{$branch->date}}</p>
 								</div>
 								<div class="col-6 col-md-3">
 									<p class="key">{{__('site.image')}}</p>
-									<img src="{{asset('gallery/'.$new->photo)}}"style="width:75px;height:75px;">
+									<img src="{{asset('gallery/'.$branch->photo)}}"style="width:75px;height:75px;">
 								</div>
 								<div class="col-6 col-md-2">
                                     <p class="key">{{__('site.actions')}}</p>
@@ -60,11 +60,11 @@
                                         </button>
 
                                         <div class="dropdown-menu">
-                                            @can('edit_news')
-                                            <a href="{{route('news.edit',$new->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
+                                            @can('edit_branches')
+                                            <a href="{{route('branches.edit',$branch->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
                                             @endcan
-                                            @can('delete_news')
-                                            <form action="{{route('news.destroy', $new->id)}}" method="POST" class="dropdown-item">
+                                            @can('delete_branches')
+                                            <form action="{{route('branches.destroy', $branch->id)}}" method="POST" class="dropdown-item">
                                                 @csrf
                                                 {{ method_field('delete') }}
                                                 <a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
@@ -82,7 +82,7 @@
 		</div>
 		@endif
 		@isset($paginate)
-		{{ $news->links() }}
+		{{ $branches->links() }}
 		@endisset
 	</div>
 </div>
