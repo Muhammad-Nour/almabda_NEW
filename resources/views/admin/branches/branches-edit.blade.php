@@ -1,6 +1,6 @@
 @extends('layouts.admin_app')
 
-@section('title', __('site.news'))
+@section('title', __('site.branches'))
 
 @section('css')
 @stop
@@ -9,12 +9,12 @@
 @stop
 
 
-@section('title-page',__('site.news'))
+@section('title-page',__('site.branches'))
 
 @section('content')
 
 <!-- Main content -->
-<div class="main-stage news">
+<div class="main-stage branches">
 	<div class="row">
 		<div class="col-md-7 m-auto">
 			@include('partial.alerts')
@@ -24,7 +24,7 @@
 				</div>
 				<!-- /.card-header -->
 				<!-- form start -->
-				<form action="{{route('news.update',$news->id)}}" 
+				<form action="{{route('branches.update',$branch->id)}}" 
 					method="post" enctype="multipart/form-data">
 					@csrf
 					{{ method_field('put') }}
@@ -32,35 +32,31 @@
 						<div class="form-group">
 							<label>{{__('site.name_ar')}}</label>
 							<input type="text" class="form-control" name="name_ar" required 
-							value="{{ isset($news) ? $news->name_ar : ''}}">
+							value="{{ isset($branch) ? $branch->name_ar : ''}}">
 						</div>
 						<div class="form-group">
 							<label>{{__('site.name_en')}}</label>
 							<input type="text" class="form-control" name="name_en" required 
-							value="{{ isset($news) ? $news->name_en : ''}}">
+							value="{{ isset($branch) ? $branch->name_en : ''}}">
 						</div>
 						<div class="form-group">
-							<label>{{__('site.description_ar')}}</label>
-							<textarea class="form-control" name="description_ar" 
-							value="{{$news->description_ar}}" required>
-							{{$news->description_ar}}</textarea>
+							<label>{{__('site.address_ar')}}</label>
+							<input type="text" class="form-control" name="address_ar" required 
+							value="{{ isset($branch) ? $branch->address_ar : ''}}">
 						</div>
-
 						<div class="form-group">
-							<label>{{__('site.description_en')}}</label>
-							<textarea class="form-control" name="description_en" 
-							value="{{$news->description_en}}" required>
-							{{$news->description_en}}</textarea>
+							<label>{{__('site.address_en')}}</label>
+							<input type="text" class="form-control" name="address_en" required 
+							value="{{ isset($branch) ? $branch->address_en : ''}}">
 						</div>
-
 						<div class="form-group">
-							<label>{{__('site.date')}}</label>
-							<input type="datetime-local" class="form-control" name="date" id="date" required value="{{ \Carbon\Carbon::parse($news->date)->format('Y-m-d\TH:i')}}">
+							<label>{{__('site.map')}}</label>
+							<input type="text" class="form-control" name="map" required 
+							value="{{ isset($branch) ? $branch->map : ''}}">
 						</div>
-
 						<div class="form-group">
 							<strong>{{__('site.image')}}</strong>
-							<img src="{{asset('gallery/'.$news->photo)}}" style="width:100px;height:100px;">
+							<img src="{{asset('gallery/'.$branch->photo)}}" style="width:100px;height:100px;">
 							<input type="file" class="form-control" name="photo">
 						</div>
 						

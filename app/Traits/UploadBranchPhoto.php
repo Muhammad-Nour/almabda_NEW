@@ -5,9 +5,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests\BranchRequest;
 
 
-trait UploadbrachTrait
+trait UploadBranchPhoto
 {
-    public function UploadbrachTrait(Request $request,$folderName)
+    public function UploadBranchPhoto(Request $request,$folderName)
     {
     	$photo = $request->file('photo')->getClientOriginalName();
 

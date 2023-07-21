@@ -39,12 +39,14 @@
 						</div>
 						<div class="form-group">
 								<label>{{__('site.address_ar')}}</label>
-								<textarea class="form-control" name="description_ar" id="address_ar" value="{{old('address_ar')}}" required></textarea>
+								<input type="text" class="form-control" name="address_ar" required 
+							value="{{old('address_ar')}}">
 							</div>
 
 							<div class="form-group">
 								<label>{{__('site.address_en')}}</label>
-								<textarea class="form-control" name="description_en" id="address_en" value="{{old('address_en')}}" required></textarea>
+								<input type="text" class="form-control" name="address_en" required 
+							value="{{old('address_en')}}">
 							</div>
 
 							<div class="form-group">
@@ -56,12 +58,6 @@
 							<div class="form-grou">
 								<label>{{__('site.add_image')}}</label>
 								<input type="file" class="form-control" name="photo">
-							</div>
-
-							<div class="form-group">
-								<label>{{__('site.date')}}</label>
-								<input type="datetime-local" class="form-control" name="date"
-								value="{{ \Carbon\Carbon::now()->format('Y-m-d\TH:i')}}">
 							</div>
 					</div>
 				</div>

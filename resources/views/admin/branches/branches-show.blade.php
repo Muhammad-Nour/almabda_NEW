@@ -37,16 +37,16 @@
 									<p class="value">{{$branch->name_en}}</p>
 								</div>
 								<div class="col-6 col-md-3">
-									<p class="key">{{__('site.description_ar')}}</p>
-									<p class="value">{{$branch->description_ar}}</p>
+									<p class="key">{{__('site.address_ar')}}</p>
+									<p class="value">{{$branch->address_ar}}</p>
 								</div>
 								<div class="col-6 col-md-3">
-									<p class="key">{{__('site.description_en')}}</p>
-									<p class="value">{{$branch->description_en}}</p>
+									<p class="key">{{__('site.address_en')}}</p>
+									<p class="value">{{$branch->address_en}}</p>
 								</div>		
 								<div class="col-6 col-md-3">
-									<p class="key">{{__('site.date')}}</p>
-									<p class="value">{{$branch->date}}</p>
+									<p class="key">{{__('site.map')}}</p>
+									<p class="value">{{$branch->map}}</p>
 								</div>
 								<div class="col-6 col-md-3">
 									<p class="key">{{__('site.image')}}</p>
