@@ -86,7 +86,7 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        return view('admin.news.news-edit',compact('news'));
     }
 
     /**
@@ -96,9 +96,38 @@ class NewsController extends Controller
      * @param  \App\Models\News  $news
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateNewsRequest $request, News $news)
+    public function update(NewsRequest $request, News $news)
     {
-        //
+        $request->validated();
+
+        if($request->hasFile('photo'))
+        {
+
+            $path  = $this->UploadNewsPhoto($request,'news');
+
+            $news->update([
+                'name_ar'=>$request->name_ar,
+                'name_en'=>$request->name_en,
+                'description_ar'=>$request->description_ar,
+                'description_en'=>$request->description_en,
+                'date'=>$request->date,
+                'updated_by' => Auth::user()->id,
+                'photo'=>$path
+            ]);
+
+        }else{
+            $news->update([
+                'name_ar'=>$request->name_ar,
+                'name_en'=>$request->name_en,
+                'description_ar'=>$request->description_ar,
+                'description_en'=>$request->description_en,
+                'date'=>$request->date,
+                'updated_by' => Auth::user()->id,
+            ]);
+        }
+
+        return redirect(route('news.index'))->with('msg',__('site.updatedMessage'));
+
     }
 
     /**
@@ -109,6 +138,9 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        $news->delete();
+
+        return redirect(route('news.index'))->with('msg',__('site.deletedMessage'));
+
     }
 }

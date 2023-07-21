@@ -26,9 +26,9 @@ class NewsRequest extends FormRequest
     {
         return [
             'name_ar'      => 
-            ['required','string','max:255',Rule::unique('news')->ignore($this->route()->parameter('new'))],
+            ['required','string','max:255',Rule::unique('news')->ignore($this->route()->parameter('news'))],
             'name_en'      => 
-            ['required','string','max:255',Rule::unique('news')->ignore($this->route()->parameter('new'))],
+            ['required','string','max:255',Rule::unique('news')->ignore($this->route()->parameter('news'))],
             'description_ar'        => 'required|string',
             'description_en'        => 'required|string',
             'date'=>'Date|required'
