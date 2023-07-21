@@ -17,7 +17,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProjectGalleryController;
-
+use App\Http\Controllers\BranchController;
 
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
@@ -78,6 +78,8 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('projects', ProjectController::class);
     Route::resource('contacts', ContactController::class);
     Route::resource('news', NewsController::class);
+    Route::resource('branches', BranchController::class);
+    
 });
 
 Route::middleware([

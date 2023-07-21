@@ -25,6 +25,7 @@ return [
     'notes'=>'Notes',
     'subject'=>'Subject',
     'news'=>'News',
+    'branches'=>'Branches',
 
     'key'=>'Key',
     'edit'=>'Edit',

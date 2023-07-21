@@ -255,6 +255,32 @@
           </li>
           @endcan('products')
 
+          @can('branches')
+          <li class="nav-item">
+            <a href="#" class="nav-link {{ request()->routeIs('branches.*') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                {{ __('site.branches') }}
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('branches.index') }}" class="nav-link ">
+                  <i class="fas fa-list nav-icon"></i>
+                  <p>{{ __('site.show') }}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('branches.create') }}" class="nav-link">
+                  <i class="fas fa-plus nav-icon"></i>
+                  <p>{{ __('site.add') }}</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          @endcan('branches')
+
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('admins.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-lock"></i>
