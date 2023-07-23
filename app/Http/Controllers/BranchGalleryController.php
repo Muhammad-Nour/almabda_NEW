@@ -6,6 +6,7 @@ use App\Models\BranchGallery;
 use App\Models\Branch;
 use Illuminate\Http\Request;
 use App\Http\Requests\BranchGalleryRequest;
+use Illuminate\Support\Facades\Auth;
 
 class BranchGalleryController extends Controller
 {
@@ -80,7 +81,8 @@ class BranchGalleryController extends Controller
             $path  = $file->storeAs('branches',$filename,'galleries');
 
             $branchGallery->update([
-                'photo' => $path,
+                'photo'         => $path,
+                'updated_by'    =>Auth::user()->id
             ]);
         }
         return redirect(route('branch.details',$branchGallery->branch_id))->with('msg',__('site.updatedMessage'));
