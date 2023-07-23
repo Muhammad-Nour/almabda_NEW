@@ -29,17 +29,17 @@
 						<div>
 							<h4>{{__('site.branchGallery')}}</h4>
 						</div>
-						<form class="form-horizontal" action="{{route('branchGallery.update',$branchGallery->id)}}" 
+						<form class="form-horizontal" action="{{route('branchGallery.update',$branchGallery->id)}}"
 						method="post" enctype="multipart/form-data">
 						@csrf
 						{{method_field('put')}}
 						<div class="row">
 							<div class="row" style="margin-bottom:15px">
 								<div class="col-6 col-md-12">
-									<img src="{{asset('branchGallery/'.$branchGallery->photo)}}" style="width:100px;height:100px;">
+									<img src="{{asset('gallery/'.$branchGallery->photo)}}" style="width:100px;height:100px;">
 								</div>
 								<div class="col-6 col-md-12">
-									<input type="file" class="form-control" name="branchGallery">
+									<input type="file" class="form-control" name="gallery">
 								</div>
 								<div class="col-6 col-md-12">
 									<button type="submit" class="btn btn-style">{{__('site.update')}}</button>

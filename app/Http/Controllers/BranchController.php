@@ -135,7 +135,7 @@ class BranchController extends Controller
 
     public function getDetails(Branch $branch)
     {
-        $galleries = BranchGallery::where('Branch_id',$branch->id)->get();
+        $galleries = BranchGallery::where('branch_id',$branch->id)->get();
 
         $branches = Branch::where('id',$branch->id)->get();
 
@@ -153,7 +153,7 @@ class BranchController extends Controller
 
                 $filename = $file->getClientOriginalName();
 
-                $path  = $file->storeAs('branchs',$filename,'galleries');
+                $path  = $file->storeAs('branches',$filename,'galleries');
 
                 BranchGallery::create([
                     'branch_id' => $request->branch_id,

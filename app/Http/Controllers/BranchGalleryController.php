@@ -71,7 +71,19 @@ class BranchGalleryController extends Controller
      */
     public function update(BranchGalleryRequest $request, BranchGallery $branchGallery)
     {
-        //
+        if($request->hasFile('gallery'))
+        {
+            $file = $request->file('gallery');
+
+            $filename = $file->getClientOriginalName();
+
+            $path  = $file->storeAs('branches',$filename,'galleries');
+
+            $branchGallery->update([
+                'photo' => $path,
+            ]);
+        }
+        return redirect(route('branch.details',$branchGallery->branch_id))->with('msg',__('site.updatedMessage'));
     }
 
     /**
