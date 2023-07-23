@@ -18,6 +18,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProjectGalleryController;
 use App\Http\Controllers\BranchController;
+use App\Http\Controllers\BranchGalleryController;
 
 use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
@@ -67,6 +68,9 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::post('projects/add/images',[ProjectController::class,'addImage'])->name('add.ProjectImages');
     Route::get('projects/{project}/details',[ProjectController::class,'getDetails'])->name('project.details');
 
+    Route::post('branches/add/images',[BranchController::class,'addImage'])->name('add.branchImages');
+    Route::get('branches/{branch}/details',[BranchController::class,'getDetails'])->name('branch.details');
+
     Route::resource('products', ProductController::class);
     Route::resource('users', UserController::class);
     Route::resource('categories', CategoryController::class);
@@ -79,6 +83,7 @@ Route::group(['middleware' => ['auth:admin']], function() {
     Route::resource('contacts', ContactController::class);
     Route::resource('news', NewsController::class);
     Route::resource('branches', BranchController::class);
+    Route::resource('branchGallery', BranchGalleryController::class);
     
 });
 

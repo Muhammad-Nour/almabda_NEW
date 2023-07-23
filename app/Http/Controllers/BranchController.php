@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Branch;
+use App\Models\BranchGallery;
+
 use App\Http\Requests\BranchRequest;
 use Illuminate\Support\Facades\Auth;
+
 use App\Traits\UploadBranchPhoto;
+use App\Traits\UploadBranchGallery;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class BranchController extends Controller
 {
     use UploadBranchPhoto ;
+    use UploadBranchGallery;
     /**
      * Display a listing of the resource.
      *
@@ -126,6 +131,38 @@ class BranchController extends Controller
 
         return redirect(route('branches.index'))->with('msg',__('site.updatedMessage'));
 
+    }
+
+    public function getDetails(Branch $branch)
+    {
+        $galleries = BranchGallery::where('Branch_id',$branch->id)->get();
+
+        $branches = Branch::where('id',$branch->id)->get();
+
+        return view('admin.branches.branches-details',
+            compact('galleries','branch','branches'));
+    }
+
+    public function addImage(Branch $branch , Request $request)
+    {
+        if($request->hasFile('gallery'))
+        {
+            $files = $request->file('gallery');
+
+            foreach($files as $file){
+
+                $filename = $file->getClientOriginalName();
+
+                $path  = $file->storeAs('branchs',$filename,'galleries');
+
+                BranchGallery::create([
+                    'branch_id' => $request->branch_id,
+                    'photo' => $path,
+                    'admin_id' => Auth::user()->id,
+                ]);
+            }
+        }
+        return redirect()->back()->withInput()->with('msg',__('site.addedMessage'));
     }
 
     /**

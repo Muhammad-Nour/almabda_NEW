@@ -59,6 +59,10 @@
 								<label>{{__('site.add_image')}}</label>
 								<input type="file" class="form-control" name="photo">
 							</div>
+							<div class="form-group ">
+							<label>{{__('site.add_gallery')}}</label>
+							<input type="file" class="form-control" name="gallery[]" multiple>
+						</div>
 					</div>
 				</div>
 				<!-- /.card-body -->

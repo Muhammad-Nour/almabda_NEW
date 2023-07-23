@@ -53,37 +53,39 @@
 									<img src="{{asset('gallery/'.$branch->photo)}}"style="width:75px;height:75px;">
 								</div>
 								<div class="col-6 col-md-2">
-                                    <p class="key">{{__('site.actions')}}</p>
-                                    <div class="actions-dropdown">
-                                        <button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-h"></i>
-                                        </button>
+									<p class="key">{{__('site.actions')}}</p>
+									<div class="actions-dropdown">
+										<button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fas fa-ellipsis-h"></i>
+										</button>
 
-                                        <div class="dropdown-menu">
-                                            @can('edit_branches')
-                                            <a href="{{route('branches.edit',$branch->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
-                                            @endcan
-                                            @can('delete_branches')
-                                            <form action="{{route('branches.destroy', $branch->id)}}" method="POST" class="dropdown-item">
-                                                @csrf
-                                                {{ method_field('delete') }}
-                                                <a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
-                                            </form>
-                                            @endcan
-                                        </div>
-                                    </div>
-                                </div>
+										<div class="dropdown-menu">
+											@can('edit_branches')
+											<a href="{{route('branch.details',$branch->id)}}" class="dropdown-item">
+												<i class="fa fa-info-circle"></i>{{__('site.details')}}</a>
+												<a href="{{route('branches.edit',$branch->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
+												@endcan
+												@can('delete_branches')
+												<form action="{{route('branches.destroy', $branch->id)}}" method="POST" class="dropdown-item">
+													@csrf
+													{{ method_field('delete') }}
+													<a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
+												</form>
+												@endcan
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					@endforeach
 				</div>
-				@endforeach
 			</div>
+			@endif
+			@isset($paginate)
+			{{ $branches->links() }}
+			@endisset
 		</div>
-		@endif
-		@isset($paginate)
-		{{ $branches->links() }}
-		@endisset
 	</div>
-</div>
-@stop
+	@stop
