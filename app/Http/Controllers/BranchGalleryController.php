@@ -59,7 +59,7 @@ class BranchGalleryController extends Controller
      */
     public function edit(BranchGallery $branchGallery)
     {
-        view('admin.branches.edit-gallery',compact('branchGallery'));
+        return view('admin.branches.edit-gallery',compact('branchGallery'));
     }
 
     /**
