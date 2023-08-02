@@ -45,8 +45,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $permission = Permission::get();
-        return view('admin.roles.role-create',compact('permission'));
+        $permission = Permission::select()->where('foreign_keyyy',null)->get();
+        $rest   = Permission::select()->where('foreign_keyyy','<>', null)->get(); 
+        return view('admin.roles.role-create',compact('permission','rest'));
     }
     
     /**
@@ -57,24 +58,14 @@ class RoleController extends Controller
      */
     public function store(RoleRequest $request)
     {
-        $input = $request->validated();
+        $request->validated();
     
         $role = Role::create(['name' => $request->input('name')]);
 
         $role->syncPermissions($request->input('permission'));
     
         return redirect()->back()->withInput()->with('msg',__('site.addedMessage'));
-
-        $this->validate($request, [
-            'name' => 'required|unique:roles,name',
-            'permission' => 'required',
-        ]);
     
-        $role = Role::create(['name' => $request->input('name')]);
-        $role->syncPermissions($request->input('permission'));
-    
-        return redirect()->route('admin.roles.index')
-                        ->with('success','Role created successfully');
     }
     /**
      * Display the specified resource.

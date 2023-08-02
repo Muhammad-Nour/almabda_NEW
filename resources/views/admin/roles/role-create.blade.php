@@ -15,7 +15,7 @@
 <!-- Main content -->
 <div class="main-stage roles">
 	<div class="row">
-		<div class="col-md-7 m-auto">
+		<div class="col-md-10 m-auto">
 			@include('partial.alerts')
 			<div class="card">
 				<div class="card-header">
@@ -25,6 +25,7 @@
 				<!-- form start -->
 				<form action="{{route('roles.store')}}" method="post">
 					@csrf
+					{{ method_field('post') }}
 					<div class="card-body">
 						<div class="form-group">
 							<label>{{__('site.name')}}</label>
@@ -32,16 +33,23 @@
 						</div>
 						<div class="form-group">
 							<label for="permission">{{__('site.roles')}}</label>
-							<ul>
-								<li style="display: inline;">
+								<div class="row">
 									@foreach($permission as $value)
-									<label>
-										{{ Form::checkbox('permission[]', $value->id, false, array('class' => 'name')) }}
-										{{ $value->name }}
+									<label class="col-md-3">
+										<input type="checkbox" name="permission[]" value="{{$value->id}}">
+										{{ $value->name }} 
 									</label>
+									@foreach($rest as $res)
+
+									@if($value->id === $res->foreign_keyyy)
+									<label class="col-md-3">
+										<input type="checkbox" name="permission[]" value="{{$res->id}}">
+										{{ $res->name }}
+									</label>
+									@endif
 									@endforeach
-								</li>
-							</ul>
+									@endforeach
+							</div>
 						</div>
 					</div>
 					<!-- /.card-body -->
