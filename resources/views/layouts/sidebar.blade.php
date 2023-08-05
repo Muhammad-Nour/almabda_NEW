@@ -183,6 +183,7 @@
           </li>
           @endcan('projects')
 
+          @can('sliders')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('sliders.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-sliders-h"></i>
@@ -198,14 +199,17 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
+            @can('add_sliders')
               <li class="nav-item">
                 <a href="{{ route('sliders.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>
               </li>
+            @endcan('add_sliders')
             </ul>
           </li>
+          @endcan('sliders')
 
           @can('categories')
           <li class="nav-item">
