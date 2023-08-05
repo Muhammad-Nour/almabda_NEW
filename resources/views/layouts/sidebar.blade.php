@@ -87,12 +87,14 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
+              @can('add_partners')
               <li class="nav-item">
                 <a href="{{ route('partners.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>
               </li>
+              @endcan('add_partners')
             </ul>
           </li>
           @endcan('partners')
@@ -113,12 +115,14 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
+              @can('add_contacts')
               <li class="nav-item">
                 <a href="{{ route('contacts.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>
               </li>
+              @endcan('add_contacts')
             </ul>
           </li>
           @endcan('contacts')
@@ -167,12 +171,14 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
+              @can('add_projects')
               <li class="nav-item">
                 <a href="{{ route('projects.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>
               </li>
+              @endcan('add_projects')
             </ul>
           </li>
           @endcan('projects')
@@ -245,12 +251,14 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
+              @can('add_products')
               <li class="nav-item">
                 <a href="{{ route('products.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>
               </li>
+              @endcan('add_products')
             </ul>
           </li>
           @endcan('products')
@@ -271,16 +279,20 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
+              @can('add_branches')
               <li class="nav-item">
                 <a href="{{ route('branches.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>
               </li>
+              @endcan('add_branches')
             </ul>
           </li>
           @endcan('branches')
 
+
+          @can('users')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('admins.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-lock"></i>
@@ -296,15 +308,19 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
+              @can('add_users')
               <li class="nav-item">
                 <a href="{{ route('admins.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>
               </li>
+              @endcan('add_users')
             </ul>
           </li>
+          @endcan('users')
 
+          @can('clients')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('users.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-lock"></i>
@@ -322,7 +338,9 @@
               </li>
             </ul>
           </li>
+          @endcan('clients')
 
+          @can('roles')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('roles.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-lock"></i>
@@ -338,14 +356,17 @@
                   <p>{{ __('site.show') }}</p>
                 </a>
               </li>
+              @can('add_roles')
               <li class="nav-item">
                 <a href="{{ route('roles.create') }}" class="nav-link">
                   <i class="fas fa-plus nav-icon"></i>
                   <p>{{ __('site.add') }}</p>
                 </a>
               </li>
+              @endcan('add_roles')
             </ul>
           </li>
+          @endcan('roles')
 
         </ul>
       </nav>
