@@ -60,9 +60,11 @@
 										</button>
 
 										<div class="dropdown-menu">
-											@can('edit_branches')
+											@can('details_branches')
 											<a href="{{route('branch.details',$branch->id)}}" class="dropdown-item">
 												<i class="fa fa-info-circle"></i>{{__('site.details')}}</a>
+												@endcan()
+												@can('edit_branches')
 												<a href="{{route('branches.edit',$branch->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
 												@endcan
 												@can('delete_branches')

@@ -40,7 +40,6 @@
 										{{ $value->name }} 
 									</label>
 									@foreach($rest as $res)
-
 									@if($value->id === $res->foreign_keyyy)
 									<label class="col-md-3">
 										<input type="checkbox" name="permission[]" value="{{$res->id}}">
@@ -48,6 +47,7 @@
 									</label>
 									@endif
 									@endforeach
+									<br/>
 									@endforeach
 							</div>
 						</div>

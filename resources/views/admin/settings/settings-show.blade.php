@@ -36,7 +36,7 @@
 									<p class="key">{{__('site.value')}}</p>
 									<p class="value">{{$setting->value}}</p>
 								</div>
-								@can('edit')
+								@can('edit_settings')
 								<div class="col-6 col-md-2">
 									<p class="key">{{__('site.edit')}}</p>
 									<a href="{{route('settings.edit',$setting->id)}}" class="btn btn-warning">

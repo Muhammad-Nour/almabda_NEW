@@ -107,10 +107,10 @@
                                         </button>
 
                                         <div class="dropdown-menu">
-                                            @can('edit')
+                                            @can('edit_products')
                                             <a href="{{route('products.edit',$product->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
                                             @endcan
-                                            @can('delete')
+                                            @can('delete_products')
                                             <form action="{{route('products.destroy',$product->id)}}" method="POST" class="dropdown-item">
                                                 @csrf
                                                 {{ method_field('delete') }}
@@ -133,7 +133,7 @@
 								<div class="col-6 col-md-6">
 									<img src="{{asset('gallery/'.$product->photo)}}" style="width:250px;height:150px;">
 								</div>
-								@can('edit')
+								@can('edit_products')
 								<div class="form-group col-md-2">
 									<p class="key">{{__('site.edit')}}</p>
 									<a href="{{route('product.editMainImages',$product->id)}}" class="btn btn-warning">
@@ -141,7 +141,7 @@
 									</div>
 									@endcan
 
-									@can('delete')
+									@can('delete_products')
 									<div class="form-group col-md-2">
 										<p class="key">{{__('site.delete')}}</p>
 										<form action="{{route('product.deleteMainImages',$product->id)}}" method="post" enctype="multipart/form-data">
@@ -163,7 +163,7 @@
 								<div class="col-6 col-md-6">
 									<img src="{{asset('gallery/'.$product->small_photo)}}" style="width:250px;height:100px;">
 								</div>
-								@can('edit')
+								@can('edit_products')
 								<div class="col-md-2">
 									<p class="key">{{__('site.edit')}}</p>
 									<a href="{{route('product.editMainImages',$product->id)}}" class="btn btn-warning">
@@ -171,7 +171,7 @@
 									</div>
 									@endcan
 
-									@can('delete')
+									@can('delete_products')
 									<div class="col-md-2">
 										<p class="key">{{__('site.delete')}}</p>
 										<form action="{{route('product.deleteMainImages',$product->id)}}" method="post" enctype="multipart/form-data">
@@ -219,7 +219,7 @@
 											<img src="{{asset('gallery/'.$gallery->photo)}}" style="width:100px;height:100px;">
 										</div>
 
-										@can('edit')
+										@can('edit_products')
 										<div class="col-6 col-md-2">
 											<p class="key">{{__('site.edit')}}</p>
 											<a href="{{route('galleries.edit',$gallery->id)}}" class="btn btn-warning">
@@ -227,7 +227,7 @@
 											</div>
 											@endcan
 
-											@can('delete')
+											@can('delete_products')
 											<div class="col-6 col-md-2">
 												<p class="key">{{__('site.delete')}}</p>
 												<form action="{{route('galleries.destroy',$gallery->id)}}" method="post">

@@ -52,10 +52,10 @@
 									</button>
 
 									<div class="dropdown-menu">
-										@can('edit')
+										@can('edit_projects')
 										<a href="{{route('projects.edit',$project->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
 										@endcan
-										@can('delete')
+										@can('delete_projects')
 										<form action="{{route('projects.destroy',$project->id)}}" method="POST" class="dropdown-item">
 											@csrf
 											{{ method_field('delete') }}
@@ -72,7 +72,7 @@
 				</div>
 				<div class="card">
 					<div class="card-body">
-
+						@can('add_projects')
 						<div style="margin-bottom:15px">
 							<span style="font-size:20px">{{__('site.gallery')}}</span>
 							<button class="btn btn-info" id="add_image">
@@ -94,6 +94,7 @@
 								</div>
 							</form>
 						</div>
+						@endcan
 
 						<div class="row">
 
@@ -106,7 +107,7 @@
 								<img src="{{asset('gallery/'.$proGallery->photo)}}" style="width:100px;height:100px;">
 							</div>
 
-							@can('edit')
+							@can('edit_projects')
 							<div class="col-6 col-md-2">
 								<p class="key">{{__('site.edit')}}</p>
 								<a href="{{route('project.editGalleryImage',$proGallery->id)}}" class="btn btn-warning">
@@ -114,7 +115,7 @@
 								</div>
 								@endcan
 
-								@can('delete')
+								@can('delete_projects')
 								<div class="col-6 col-md-2">
 									<p class="key">{{__('site.delete')}}</p>
 									<form action="{{route('project.deleteGalleryImage',$proGallery->id)}}" method="post">

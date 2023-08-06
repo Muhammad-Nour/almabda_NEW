@@ -82,6 +82,7 @@
 	</div>
 	<div class="card">
 		<div class="card-body">
+			@can('add_branches')
 			<div style="margin-bottom:15px">
 				<span style="font-size:20px">{{__('site.gallery')}}</span>
 				<button class="btn btn-info" id="add_image">
@@ -100,6 +101,7 @@
 					</div>
 				</form>
 			</div>
+			@endcan
 			<div class="row">
 				<?php $counter = 1 ; ?>
 				@if($galleries->count() > 0)
@@ -108,7 +110,7 @@
 					<?php echo $counter++ ; ?> &nbsp;&nbsp;
 					<img src="{{asset('gallery/'.$gallery->photo)}}" style="width:100px;height:100px;">
 				</div>
-				@can('edit')
+				@can('edit_branches')
 				<div class="col-6 col-md-2">
 					<p class="key">{{__('site.edit')}}</p>
 					<a href="{{route('branchGallery.edit',$gallery->id)}}" class="btn btn-warning">
@@ -116,7 +118,7 @@
 					</div>
 					@endcan
 
-					@can('delete')
+					@can('delete_branches')
 					<div class="col-6 col-md-2">
 						<p class="key">{{__('site.delete')}}</p>
 						<form action="{{route('branchGallery.destroy',$gallery->id)}}" method="post">

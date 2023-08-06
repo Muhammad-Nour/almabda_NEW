@@ -41,23 +41,20 @@
 										<button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<i class="fas fa-ellipsis-h"></i>
 										</button>
-
 										<div class="dropdown-menu">
-											@can('show')
-											
-												<a href="{{route('roles.show',$role->id)}}" class="dropdown-item"><i class="fa fa-eye"></i>{{__('site.show')}}</a>
-											
-											@endcan
-											@can('edit')
+											@can('roles')
+											<a href="{{route('roles.show',$role->id)}}" class="dropdown-item"><i class="fa fa-eye"></i>{{__('site.show')}}</a>
+											@endcan('roles')
+											@can('edit_roles')
 											<a href="{{route('roles.edit',$role->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
-											@endcan
-											@can('delete')
+											@endcan('edit_roles')
+											@can('delete_roles')
 											<form action="{{route('roles.destroy', $role->id)}}" method="POST" class="dropdown-item">
 												@csrf
 												{{ method_field('delete') }}
 												<a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
 											</form>
-											@endcan
+											@endcan('delete_roles')
 										</div>
 									</div>
 								</div>

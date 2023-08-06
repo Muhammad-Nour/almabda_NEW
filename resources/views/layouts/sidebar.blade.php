@@ -33,7 +33,7 @@
               <p>{{ __('site.dasboard') }}</p>
             </a>
           </li>
-
+          @can('settings')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('settings.*') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -51,6 +51,8 @@
               </li>
             </ul>
           </li>
+          @endcan('settings')
+
           @can('customs')
           <li class="nav-item">
             <a href="#" class="nav-link {{ request()->routeIs('customs.*') ? 'active' : '' }}">

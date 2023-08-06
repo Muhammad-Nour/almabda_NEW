@@ -61,10 +61,10 @@
                                         </button>
 
                                         <div class="dropdown-menu">
-                                            @can('edit')
+                                            @can('edit_contacts')
                                             <a href="{{route('contacts.edit',$contact->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
                                             @endcan
-                                            @can('delete')
+                                            @can('delete_contacts')
                                             <form action="{{route('contacts.destroy', $contact->id)}}" method="POST" class="dropdown-item">
                                                 @csrf
                                                 {{ method_field('delete') }}

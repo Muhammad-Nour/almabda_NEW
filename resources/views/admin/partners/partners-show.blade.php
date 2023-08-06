@@ -50,16 +50,17 @@
                                         </button>
 
                                         <div class="dropdown-menu">
-                                            @can('edit')
+                                            @can('edit_partners')
                                             <a href="{{route('partners.edit',$partner->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
-                                            @endcan
-                                            @can('delete')
+                                            @endcan('edit_partners')
+
+                                            @can('delete_partners')
                                             <form action="{{route('partners.destroy', $partner->id)}}" method="POST" class="dropdown-item">
                                                 @csrf
                                                 {{ method_field('delete') }}
                                                 <a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
                                             </form>
-                                            @endcan
+                                            @endcan('delete_partners')
                                         </div>
                                     </div>
                                 </div>

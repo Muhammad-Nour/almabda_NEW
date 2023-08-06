@@ -43,39 +43,41 @@
 								</div>
 
 								<div class="col-6 col-md-2">
-                                    <p class="key">{{__('site.actions')}}</p>
-                                    <div class="actions-dropdown">
-                                        <button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-h"></i>
-                                        </button>
+									<p class="key">{{__('site.actions')}}</p>
+									<div class="actions-dropdown">
+										<button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											<i class="fas fa-ellipsis-h"></i>
+										</button>
 
-                                        <div class="dropdown-menu">
-                                        	<a href="{{route('project.details',$project->id)}}" class="dropdown-item">
-									<i class="fa fa-info-circle"></i>{{__('site.details')}}</a>
-                                            @can('edit')
-                                            <a href="{{route('projects.edit',$project->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
-                                            @endcan
-                                            @can('delete')
-                                            <form action="{{route('projects.destroy', $project->id)}}" method="POST" class="dropdown-item">
-                                                @csrf
-                                                {{ method_field('delete') }}
-                                                <a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
-                                            </form>
-                                            @endcan
-                                        </div>
-                                    </div>
-                                </div>
+										<div class="dropdown-menu">
+											@can('details_projects')
+											<a href="{{route('project.details',$project->id)}}" class="dropdown-item">
+												<i class="fa fa-info-circle"></i>{{__('site.details')}}</a>
+												@endcan('details_projects')
+												@can('edit_projects')
+												<a href="{{route('projects.edit',$project->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
+												@endcan
+												@can('delete_projects')
+												<form action="{{route('projects.destroy', $project->id)}}" method="POST" class="dropdown-item">
+													@csrf
+													{{ method_field('delete') }}
+													<a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
+												</form>
+												@endcan
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
+					@endforeach
 				</div>
-				@endforeach
 			</div>
+			@endif
+			@isset($paginate)
+			{{ $projects->links() }}
+			@endisset
 		</div>
-		@endif
-		@isset($paginate)
-		{{ $projects->links() }}
-		@endisset
 	</div>
-</div>
-@stop
+	@stop

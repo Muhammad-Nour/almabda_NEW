@@ -70,7 +70,7 @@
 								<p class="key">{{__('site.notify')}}</p>
 								<p class="value">{{$product->notify}}</p>
 							</div>
-						
+
 							<div class="col-12 col-md-2">
 								<p class="key">{{__('site.image')}}</p>
 								<p><img src="{{asset('gallery/'.$product->photo)}}" style="width:75px;height: 75px;"></p>
@@ -84,37 +84,39 @@
 
 
 							<div class="col-6 col-md-2">
-                                    <p class="key">{{__('site.actions')}}</p>
-                                    <div class="actions-dropdown">
-                                        <button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-h"></i>
-                                        </button>
+								<p class="key">{{__('site.actions')}}</p>
+								<div class="actions-dropdown">
+									<button type="button" class="btn btn-style btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+										<i class="fas fa-ellipsis-h"></i>
+									</button>
 
-                                        <div class="dropdown-menu">
-                                        	<a href="{{route('product.details',$product->id)}}" class="dropdown-item">
-									<i class="fa fa-info-circle"></i>{{__('site.details')}}</a>
-                                            @can('edit')
-                                            <a href="{{route('products.edit',$product->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
-                                            @endcan
-                                            @can('delete')
-                                            <form action="{{route('products.destroy',$product->id)}}" method="POST" class="dropdown-item">
-                                                @csrf
-                                                {{ method_field('delete') }}
-                                                <a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
-                                            </form>
-                                            @endcan
-                                        </div>
-                                    </div>
-                                </div>
+									<div class="dropdown-menu">
+										@can('product_details')
+										<a href="{{route('product.details',$product->id)}}" class="dropdown-item">
+											<i class="fa fa-info-circle"></i>{{__('site.details')}}</a>
+											@endcan
+											@can('edit_products')
+											<a href="{{route('products.edit',$product->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
+											@endcan
+											@can('delete_products')
+											<form action="{{route('products.destroy',$product->id)}}" method="POST" class="dropdown-item">
+												@csrf
+												{{ method_field('delete') }}
+												<a href="" class="delete text-danger"> <i class="fa fa-trash-alt"> </i>   {{__('site.delete')}} </a>
+											</form>
+											@endcan
+										</div>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
+				@endforeach
 			</div>
-			@endforeach
+			@endif
+			{{ $products->links() }}
 		</div>
-		@endif
-		{{ $products->links() }}
 	</div>
-</div>
-@stop
+	@stop
 

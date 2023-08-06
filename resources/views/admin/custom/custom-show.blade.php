@@ -33,7 +33,7 @@
 									<p class="key">{{__('site.attachment')}}</p>
 									<img src="{{asset('gallery/'.$custom->photo)}}"style="width:75px;height:75px;">
 								</div>
-								@can('edit')
+								@can('edit_customs')
 								<div class="col-6 col-md-4">
 									<p class="key">{{__('site.edit')}}</p>
 									<a href="{{route('customs.edit',$custom->id)}}" class="btn btn-warning">

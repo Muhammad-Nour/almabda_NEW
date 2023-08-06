@@ -55,10 +55,10 @@
                                             <i class="fas fa-ellipsis-h"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            @can('edit')
+                                            @can('edit_sliders')
                                             <a href="{{route('sliders.edit',$slider->id)}}" class=" dropdown-item"><i class="fa fa-edit"> </i> {{__('site.edit')}}</a>
                                             @endcan
-                                            @can('delete')
+                                            @can('delete_sliders')
                                             <form action="{{route('sliders.destroy', $slider->id)}}" method="POST" class="dropdown-item">
                                                 @csrf
                                                 {{ method_field('delete') }}
