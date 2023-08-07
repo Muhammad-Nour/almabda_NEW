@@ -16,6 +16,15 @@ use Hash;
 
 class AdminController extends Controller
 {
+
+    function __construct()
+    {
+        $this->middleware('permission:users', ['only' => ['index']]);
+        $this->middleware('permission:add_users', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_users', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_users', ['only' => ['destroy']]);
+    }
+
     public function index(Request $request)
     {
         $admins = Admin::orderBy('id','ASC')->paginate(5);

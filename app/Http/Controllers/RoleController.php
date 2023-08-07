@@ -1,5 +1,5 @@
 <?php
-    
+
 namespace App\Http\Controllers;
 
 
@@ -9,7 +9,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use DB;
 use App\Http\Requests\RoleRequest;
-    
+
 class RoleController extends Controller
 {
     /**
@@ -35,7 +35,7 @@ class RoleController extends Controller
     {
         $roles = Role::orderBy('id','DESC')->paginate(5);
         return view('admin.roles.index',compact('roles'))
-            ->with('i', ($request->input('page', 1) - 1) * 5);
+        ->with('i', ($request->input('page', 1) - 1) * 5);
     }
     
     /**
@@ -59,13 +59,13 @@ class RoleController extends Controller
     public function store(RoleRequest $request)
     {
         $request->validated();
-    
+        
         $role = Role::create(['name' => $request->input('name')]);
 
         $role->syncPermissions($request->input('permission'));
-    
+        
         return redirect()->back()->withInput()->with('msg',__('site.addedMessage'));
-    
+        
     }
     /**
      * Display the specified resource.
@@ -78,9 +78,9 @@ class RoleController extends Controller
         $role = Role::find($id);
         $rolePermissions = Permission::join
         ("role_has_permissions","role_has_permissions.permission_id","=","permissions.id")
-            ->where("role_has_permissions.role_id",$id)
-            ->get();
-    
+        ->where("role_has_permissions.role_id",$id)
+        ->get();
+        
         return view('admin.roles.role-show',compact('role','rolePermissions'));
     }
     
@@ -95,9 +95,9 @@ class RoleController extends Controller
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)
-            ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
-            ->all();
-    
+        ->pluck('role_has_permissions.permission_id','role_has_permissions.permission_id')
+        ->all();
+        
         return view('admin.roles.role-edit',compact('role','permission','rolePermissions'));
     }
     
@@ -111,13 +111,13 @@ class RoleController extends Controller
     public function update(RoleRequest $request, $id)
     {
         $input = $request->validated();
-    
+        
         $role = Role::find($id);
         $role->name = $request->input('name');
         $role->save();
-    
+        
         $role->syncPermissions($request->input('permission'));
-    
+        
         return redirect(route('roles.index'))->with('msg',__('site.updatedMessage'));
     }
     /**

@@ -18,6 +18,15 @@ class ProductController extends Controller
 {
     use UploadPhotoTrait;
     use UploadSmallImage;
+
+    function __construct()
+    {
+        $this->middleware('permission:products', ['only' => ['index']]);
+        $this->middleware('permission:add_products', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_products', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_products', ['only' => ['destroy']]);
+        $this->middleware('permission:product_details', ['only' => ['getDetails']]);
+    }
     /**
      * Display a listing of the resource.
      *

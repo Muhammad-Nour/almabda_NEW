@@ -7,6 +7,14 @@ use App\Http\Requests\PartnerRequest;
 
 class PartnerController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:partners', ['only' => ['index']]);
+        $this->middleware('permission:add_partners', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_partners', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_partners', ['only' => ['destroy']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

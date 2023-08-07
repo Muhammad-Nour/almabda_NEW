@@ -11,6 +11,13 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:news', ['only' => ['index']]);
+        $this->middleware('permission:add_news', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_news', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_news', ['only' => ['destroy']]);
+    }
 
     use UploadNewsPhoto;
     /**

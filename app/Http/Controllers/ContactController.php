@@ -7,6 +7,13 @@ use App\Http\Requests\ContactRequest;
 
 class ContactController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:contacts', ['only' => ['index']]);
+        $this->middleware('permission:add_contacts', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_contacts', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_contacts', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

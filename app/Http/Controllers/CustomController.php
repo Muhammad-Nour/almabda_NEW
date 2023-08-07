@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class CustomController extends Controller
 {
     use UploadPhotoCustom;
+
+    function __construct()
+    {
+        $this->middleware('permission:customs', ['only' => ['index']]);
+        $this->middleware('permission:edit_customs', ['only' => ['edit','update']]);
+    }
     /**
      * Display a listing of the resource.
      *

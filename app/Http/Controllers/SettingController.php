@@ -8,6 +8,11 @@ use App\Http\Requests\SettingRequest;
 
 class SettingController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:settings', ['only' => ['index']]);
+        $this->middleware('permission:edit_settings', ['only' => ['edit','update']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -22,9 +22,9 @@ class UserController extends Controller
     function __construct()
     {
          $this->middleware('permission:users', ['only' => ['index']]);
-         $this->middleware('permission:add', ['only' => ['create','store']]);
-         $this->middleware('permission:edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:delete', ['only' => ['destroy']]);
+         $this->middleware('permission:add_users', ['only' => ['create','store']]);
+         $this->middleware('permission:edit_users', ['only' => ['edit','update']]);
+         $this->middleware('permission:delete_users', ['only' => ['destroy']]);
     }
     /**
      * Display a listing of the resource.

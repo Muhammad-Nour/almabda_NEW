@@ -17,6 +17,15 @@ class BranchController extends Controller
 {
     use UploadBranchPhoto ;
     use UploadBranchGallery;
+
+    function __construct()
+    {
+        $this->middleware('permission:branches', ['only' => ['index']]);
+        $this->middleware('permission:add_branches', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_branches', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_branches', ['only' => ['destroy']]);
+        $this->middleware('permission:details_branches', ['only' => ['getDetails']]);
+    }
     /**
      * Display a listing of the resource.
      *

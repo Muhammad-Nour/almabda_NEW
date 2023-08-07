@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:categories', ['only' => ['index']]);
+        $this->middleware('permission:add_category', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_category', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_category', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *

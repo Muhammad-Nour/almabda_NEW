@@ -21,6 +21,15 @@ class ProjectController extends Controller
 
     use UploadProjectGallery;
     use UploadProjectPhoto;
+
+    function __construct()
+    {
+        $this->middleware('permission:projects', ['only' => ['index']]);
+        $this->middleware('permission:add_projects', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_projects', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_projects', ['only' => ['destroy']]);
+        $this->middleware('permission:details_projects', ['only' => ['getDetails']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Auth;
 
 class SliderController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:sliders', ['only' => ['index']]);
+        $this->middleware('permission:add_sliders', ['only' => ['create','store']]);
+        $this->middleware('permission:edit_sliders', ['only' => ['edit','update']]);
+        $this->middleware('permission:delete_sliders', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      *
